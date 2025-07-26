@@ -1,4 +1,0 @@
-Tooltip_IT = {
-	Tooltip_item_EmptyServingTray = "Un contenitore improvvisato per servire il cibo, non adatto ai forni a microonde.",
-	Tooltip_item_HalfPlank = "Un'asse di legno tagliata a meta', serve a ben poco attualmente...",
-}

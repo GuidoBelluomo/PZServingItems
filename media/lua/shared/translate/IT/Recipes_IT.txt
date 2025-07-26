@@ -1,17 +1,8 @@
 Recipe_IT = {
-    Recipe_Saw_Plank_in_Half = "Sega asse a meta'",
-    Recipe_Carve_Serving_Tray = "Intaglia vassoio di legno",
-    Recipe_Saw_Log_in_Quarters = "Sega tronco in 4 ciocchi'",
-    Recipe_Carve_Wooden_Bowl = "Intaglia scodella di legno",
     Recipe_Put_Food_in_1_Plate = "Metti cibo in 1 piatto",
     Recipe_Put_Food_in_2_Plates = "Metti cibo in 2 piatti",
     Recipe_Put_Food_in_3_Plates = "Metti cibo in 3 piatti",
     Recipe_Put_Food_in_4_Plates = "Metti cibo in 4 piatti",
     Recipe_Put_Food_in_5_Plates = "Metti cibo in 5 piatti",
-    Recipe_Put_Food_on_1_Serving_Tray = "Metti cibo su 1 tagliere di legno",
-    Recipe_Put_Food_on_2_Serving_Trays = "Metti cibo su 2 taglieri di legno",
-    Recipe_Put_Food_on_3_Serving_Trays = "Metti cibo su 3 taglieri di legno",
-    Recipe_Put_Food_on_4_Serving_Trays = "Metti cibo su 4 taglieri di legno",
-    Recipe_Put_Food_on_5_Serving_Trays = "Metti cibo su 5 taglieri di legno",
     Recipe_Pour_on_Ground = "Versa a terra",
 }

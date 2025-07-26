@@ -1,43 +1,5 @@
 module ServingItems
 {
-	item HalfPlank
-	{
-		Weight	=	1.5,
-		Type	=	Normal,
-		DisplayName	=	Half plank,
-		Icon	=	HalfPlank,
-		Tooltip = Tooltip_item_HalfPlank
-	}
-
-	item ServingTray
-	{
-		Weight	=	0.5,
-		Type	=	Normal,
-		DisplayName	=	Serving Tray,
-		Icon	=	EmptyServingTray,
-		Tooltip = Tooltip_item_EmptyServingTray,
-		MetalValue = 1,
-	}
-
-	item QuarterLog
-	{
-		Weight	=	2.25,
-		Type	=	Normal,
-		DisplayName	=	Quarter log,
-		Icon	=	QuarterLog,
-		Tooltip = Tooltip_item_QuarterLog
-	}
-
-	item ServingTray
-	{
-		Weight	=	0.5,
-		Type	=	Normal,
-		DisplayName	=	Serving Tray,
-		Icon	=	EmptyServingTray,
-		Tooltip = Tooltip_item_EmptyServingTray,
-		MetalValue = 1,
-	}
-
 	item FullPlate
 	{
 		Weight	=	0.3,
@@ -46,16 +8,5 @@ module ServingItems
 		Icon	=	FullPlate,
 		ReplaceOnUse	=	Plate,
 		OnEat = ServingItems_OnEat,
-	}
-
-	item FullServingTray
-	{
-		Weight	=	0.5,
-		Type	=	Food,
-		DisplayName	=	Serving Tray,
-		Icon	=	FullServingTray,
-		ReplaceOnUse	=	ServingTray,
-		OnEat = ServingItems_OnEat,
-		MetalValue = 1,
 	}
 }

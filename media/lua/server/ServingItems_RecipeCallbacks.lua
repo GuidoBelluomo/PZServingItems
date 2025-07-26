@@ -29,23 +29,15 @@ ServingItems.ItemInstances = {
     ["Base.RoastingPan"] = InventoryItemFactory.CreateItem("Base.RoastingPan"),
     ["Base.Bowl"] = InventoryItemFactory.CreateItem("Base.Bowl"),
     ["Base.Plate"] = InventoryItemFactory.CreateItem("Base.Plate"),
-    ["ServingItems.WoodenBowl"] = InventoryItemFactory.CreateItem("ServingItems.WoodenBowl"),
-    ["ServingItems.ServingTray"] = InventoryItemFactory.CreateItem("ServingItems.ServingTray"),
     ["ServingItems.FullPlate"] = InventoryItemFactory.CreateItem("ServingItems.FullPlate"),
-    ["ServingItems.FullWoodenBowl"] = InventoryItemFactory.CreateItem("ServingItems.FullWoodenBowl"),
-    ["ServingItems.FullServingTray"] = InventoryItemFactory.CreateItem("ServingItems.FullServingTray")
 }
 
 ServingItems.RecipeSuffixes = {
     ["ServingItems.FullPlate"] = "in a Plate",
-    -- ["ServingItems.FullWoodenBowl"] = "in a Wooden Bowl",
-    ["ServingItems.FullServingTray"] = "on a Serving Tray"
 }
 
 ServingItems.EmptyCounterparts = {
     ["ServingItems.FullPlate"] = "Base.Plate",
-    -- ["ServingItems.FullWoodenBowl"] = "ServingItems.WoodenBowl",
-    ["ServingItems.FullServingTray"] = "ServingItems.ServingTray"
 }
 
 ServingItems.NameCalcFunctions = {

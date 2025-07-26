@@ -1,62 +1,9 @@
 module ServingItems
 {
-	recipe Saw Plank in Half
-	{
-		Base.Plank,
-		keep Base.Saw,
-
-		Result:HalfPlank=2,
-	   	CanBeDoneFromFloor:true,
-		Sound:PZ_Saw,
-		Time:60,
-		Category:Carpentry,
-	}
-
-	recipe Carve Serving Tray
-	{
-		HalfPlank,
-		keep Base.KitchenKnife/Base.HuntingKnife,
-		keep Base.Saw,
-
-		Result:ServingTray=1,
-		CanBeDoneFromFloor:true,
-		Sound:PZ_Saw,
-		Time:200,
-		Category:Carpentry,
-	   	OnGiveXP:GiveSawLogsXP,
-	}
-
-	recipe Saw Log in Quarters
-	{
-		Base.Log,
-		keep Base.Saw,
-
-		Result:QuarterLog=4,
-	   	CanBeDoneFromFloor:true,
-		Sound:PZ_Saw,
-		Time:200,
-		Category:Carpentry,
-		OnGiveXP:GiveSawLogsXP,
-	}
-
-	recipe Carve Wooden Bowl
-	{
-		QuarterLog,
-		keep Base.KitchenKnife/Base.HuntingKnife,
-		keep Base.Saw,
-
-		Result:WoodenBowl=1,
-		CanBeDoneFromFloor:true,
-		Sound:PZ_Saw,
-		Time:1000,
-		Category:Carpentry,
-	   	OnGiveXP:GiveSawLogsXP,
-	}
-
 	recipe Put Food in 1 Plate
 	{
 		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
-		CeramicPlate=1,
+		Base.Plate=1,
 
 		Result:FullPlate=1,
 		OnCreate:PutIn1ServingItems_OnCreate,
@@ -69,7 +16,7 @@ module ServingItems
 	recipe Put Food in 2 Plates
 	{
 		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
-		CeramicPlate=2,
+		Base.Plate=2,
 
 		Result:FullPlate=2,
 		OnCreate:PutIn2ServingItems_OnCreate,
@@ -82,7 +29,7 @@ module ServingItems
 	recipe Put Food in 3 Plates
 	{
 		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
-		CeramicPlate=3,
+		Base.Plate=3,
 
 		Result:FullPlate=3,
 		OnCreate:PutIn2ServingItems_OnCreate,
@@ -95,7 +42,7 @@ module ServingItems
 	recipe Put Food in 4 Plates
 	{
 		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
-		CeramicPlate=4,
+		Base.Plate=4,
 
 		Result:FullPlate=4,
 		OnCreate:PutIn4ServingItems_OnCreate,
@@ -108,74 +55,9 @@ module ServingItems
 	recipe Put Food in 5 Plates
 	{
 		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
-		CeramicPlate=5,
+		Base.Plate=5,
 
 		Result:FullPlate=5,
-		OnCreate:PutIn5ServingItems_OnCreate,
-		Time:80.0,
-		Category:Cooking,
-		OnGiveXP:NoXP_OnGiveXP,
-		RemoveResultItem:true,
-	}
-
-	recipe Put Food on 1 Serving Tray
-	{
-		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
-		ServingTray=1,
-
-		Result:FullServingTray=1,
-		OnCreate:PutIn1ServingItems_OnCreate,
-		Time:80.0,
-		Category:Cooking,
-		OnGiveXP:NoXP_OnGiveXP,
-		RemoveResultItem:true,
-	}
-
-	recipe Put Food on 2 Serving Trays
-	{
-		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
-		ServingTray=2,
-
-		Result:FullServingTray=2,
-		OnCreate:PutIn2ServingItems_OnCreate,
-		Time:80.0,
-		Category:Cooking,
-		OnGiveXP:NoXP_OnGiveXP,
-		RemoveResultItem:true,
-	}
-
-	recipe Put Food on 3 Serving Trays
-	{
-		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
-		ServingTray=3,
-
-		Result:FullServingTray=3,
-		OnCreate:PutIn2ServingItems_OnCreate,
-		Time:80.0,
-		Category:Cooking,
-		OnGiveXP:NoXP_OnGiveXP,
-		RemoveResultItem:true,
-	}
-
-	recipe Put Food on 4 Serving Trays
-	{
-		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
-		ServingTray=4,
-
-		Result:FullServingTray=4,
-		OnCreate:PutIn4ServingItems_OnCreate,
-		Time:80.0,
-		Category:Cooking,
-		OnGiveXP:NoXP_OnGiveXP,
-		RemoveResultItem:true,
-	}
-
-	recipe Put Food on 5 Serving Trays
-	{
-		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
-		ServingTray=5,
-
-		Result:FullServingTray=5,
 		OnCreate:PutIn5ServingItems_OnCreate,
 		Time:80.0,
 		Category:Cooking,
