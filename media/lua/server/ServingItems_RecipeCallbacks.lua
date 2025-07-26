@@ -1,66 +1,54 @@
 local ServingItems = {};
-ServingItems.RecipeBaseItems = {
-    -- ["PotOfSoup"] = "Base.Pot",
-    -- ["PotOfSoupRecipe"] = "Base.Pot",
-    ["WaterPotRice"] = "Base.Pot",
-    ["PastaPot"] = "Base.Pot",
-    ["RicePot"] = "Base.Pot",
-    -- ["PotOfStew"] = "Base.Pot",
-    ["RicePan"] = "Base.Saucepan",
-    ["PastaPan"] = "Base.Saucepan",
-    ["PieWholeRaw"] = "Base.BakingPan",
-    ["CakeRaw"] = "Base.BakingPan",
-    ["PanFriedVegetables"] = "Base.Pan",
-    ["PanFriedVegetables2"] = "Base.RoastingPan",
-    ["Sandwich"] = false,
-    ["BurgerRecipe"] = false,
-    ["Salad"] = "Base.Bowl",
-    ["FruitSalad"] = "Base.Bowl",
-    ["WaterSaucepanPasta"] = "Base.Saucepan",
-    ["WaterSaucepanRice"] = "Base.Saucepan",
-    ["WaterPotPasta"] = "Base.Pot"
+-- Hashmap-like structure
+ServingItems.PlateableItems = {
+    ["Base.PieWholeRaw"] = true,
+    ["Base.CakeRaw"] = true,
+    ["Base.PanFriedVegetables"] = true,
+    ["Base.PanFriedVegetables2"] = true,
+    ["Base.Sandwich"] = true,
+    ["Base.BurgerRecipe"] = true,
+    ["farming.Salad"] = true,
+    ["Base.FruitSalad"] = true,
+    ["Base.WaterSaucepanRice"] = true,
 }
 
 ServingItems.ItemInstances = {
-    ["Base.Pot"] = InventoryItemFactory.CreateItem("Base.Pot"),
-    ["Base.Saucepan"] = InventoryItemFactory.CreateItem("Base.Saucepan"),
-    ["Base.BakingPan"] = InventoryItemFactory.CreateItem("Base.BakingPan"),
-    ["Base.Pan"] = InventoryItemFactory.CreateItem("Base.Pan"),
-    ["Base.RoastingPan"] = InventoryItemFactory.CreateItem("Base.RoastingPan"),
-    ["Base.Bowl"] = InventoryItemFactory.CreateItem("Base.Bowl"),
-    ["Base.Plate"] = InventoryItemFactory.CreateItem("Base.Plate"),
     ["ServingItems.FullPlate"] = InventoryItemFactory.CreateItem("ServingItems.FullPlate"),
+    ["ServingItems.FullPlateBlue"] = InventoryItemFactory.CreateItem("ServingItems.FullPlate"),
+    ["ServingItems.FullPlateOrange"] = InventoryItemFactory.CreateItem("ServingItems.FullPlate"),
+    ["ServingItems.FullPlateFancy"] = InventoryItemFactory.CreateItem("ServingItems.FullPlate"),
+}
+
+ServingItems:GetItemInstance(name) {
+    if (~string.find(name, ".")) then
+        name = "Base." .. name
+    end
+
+    local item = self.ItemInstances[name]
+    if item ~= nil then
+        return item
+    else
+        item = InventoryItemFactory.CreateItem(name)
+        self.ItemInstances[name] = item
+        return item
+    end
 }
 
 ServingItems.RecipeSuffixes = {
     ["ServingItems.FullPlate"] = "in a Plate",
+    ["ServingItems.FullPlateBlue"] = "in a Plate",
+    ["ServingItems.FullPlateOrange"] = "in a Plate",
+    ["ServingItems.FullPlateFancy"] = "in a Plate",
 }
 
 ServingItems.EmptyCounterparts = {
     ["ServingItems.FullPlate"] = "Base.Plate",
+    ["ServingItems.FullPlateBlue"] = "Base.PlateBlue",
+    ["ServingItems.FullPlateOrange"] = "Base.PlateOrange",
+    ["ServingItems.FullPlateFancy"] = "Base.PlateFancy",
 }
 
 ServingItems.NameCalcFunctions = {
-    ["WaterPotRice"] = function(name, type)
-        return getItemText("Rice " .. ServingItems.RecipeSuffixes[type]);
-    end,
-
-    ["PastaPot"] = function(name, type)
-        return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
-    end,
-
-    ["RicePot"] = function(name, type)
-        return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
-    end,
-
-    ["RicePan"] = function(name, type)
-        return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
-    end,
-
-    ["PastaPan"] = function(name, type)
-        return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
-    end,
-
     ["PieWholeRaw"] = function(name, type)
         return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
     end,
@@ -96,18 +84,6 @@ ServingItems.NameCalcFunctions = {
     ["FruitSalad"] = function(name, type)
         return ({string.gsub(name, "%s*%b()%s*", "")})[1]  .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
     end,
-
-    ["WaterSaucepanPasta"] = function(name, type)
-        return getItemText("Pasta " .. ServingItems.RecipeSuffixes[type]);
-    end,
-
-    ["WaterSaucepanRice"] = function(name, type)
-        return getItemText("Rice " .. ServingItems.RecipeSuffixes[type]);
-    end,
-
-    ["WaterPotPasta"] = function(name, type)
-        return getItemText("Pasta " .. ServingItems.RecipeSuffixes[type]);
-    end
 }
 
 local maxSplitting = 5;
@@ -117,8 +93,9 @@ for i=1,maxSplitting do
         for j=0,items:size() - 1 do
             local item = items:get(j);
             local itemType = item:getType();
-            local baseItemID = ServingItems.RecipeBaseItems[itemType];
-            if baseItemID ~= nil then
+            local canSplit = ServingItems.PlateableItems[itemType] ~= nil;
+            local baseItem = item::getReplaceOnUse();
+            if canSplit then
                 for k=1, i do -- It seems like adding the item manually by recreating it is the only way, as multiple result items don't do well with setName and mod data
                     result = InventoryItemFactory.CreateItem(resultType);
                     result:setBaseHunger(item:getBaseHunger() / i);
@@ -180,8 +157,8 @@ for i=1,maxSplitting do
                     local baseItemWeight = 0;
                     local emptyItemWeight = result:getWeight();
                     local ingredientWeight = item:getWeight();
-                    if baseItemID ~= false then
-                        baseItemWeight = ServingItems.ItemInstances[baseItemID]:getWeight();
+                    if baseItem then
+                        baseItemWeight = ServingItems:GetItemInstance(baseItem):getWeight();
                     end
                     
                     local foodWeight = math.abs((ingredientWeight - baseItemWeight) / i); -- Some food items weigh less than their base item, this is my "fix"
@@ -195,8 +172,8 @@ for i=1,maxSplitting do
                     player:getInventory():AddItem(result);
                 end
 
-                if (baseItemID ~= false) then
-                    player:getInventory():AddItem(baseItemID);
+                if (baseItem) then
+                    player:getInventory():AddItem(baseItem);
                 end
 
                 break;

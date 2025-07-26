@@ -2,11 +2,49 @@ module ServingItems
 {
 	item FullPlate
 	{
-		Weight	=	0.3,
+		Weight	=	0.2,
 		Type	=	Food,
-		DisplayName	=	Ceramic plate,
+        DisplayName			= Plate,
 		Icon	=	FullPlate,
 		ReplaceOnUse	=	Plate,
 		OnEat = ServingItems_OnEat,
+		EatType = plate,
+		WorldStaticModel = Plate_Ground,
+	}
+
+	item FullPlateBlue
+	{
+		Weight	=	0.2,
+		Type	=	Food,
+        DisplayName			= Blue Plate,
+		Icon	=	FullPlate,
+		ReplaceOnUse	=	PlateBlue,
+		OnEat = ServingItems_OnEat,
+		EatType = plate,
+		WorldStaticModel = Plate_Blue_Ground,
+	}
+
+	item FullPlateOrange
+	{
+		Weight	=	0.2,
+		Type	=	Food,
+        DisplayName			= Orange Plate,
+		Icon	=	FullPlate,
+		ReplaceOnUse	=	PlateOrange,
+		OnEat = ServingItems_OnEat,
+		EatType = plate,
+		WorldStaticModel = Plate_Orange_Ground,
+	}
+
+	item FullPlateFancy
+	{
+		Weight	=	0.2,
+		Type	=	Food,
+        DisplayName			= Fancy Plate,
+		Icon	=	FullPlate,
+		ReplaceOnUse	=	PlateFancy,
+		OnEat = ServingItems_OnEat,
+		EatType = plate,
+		WorldStaticModel = Plate_Fancy_Ground,
 	}
 }

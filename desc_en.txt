@@ -1,20 +1,14 @@
-This mod adds more serving items other than bowls.
+This mod makes vanilla plates useful, allowing to divide a lot of recipes into plates.
 
-At the moment, the game only allows placing soup, stew, pasta, and rice into bowls. Anything else must be eaten directly off the item it is cooked in, rendering that item useless until emptied out.
+At the moment, the game only allows placing soup, stew, pasta, and rice into bowls. Anything else must be eaten directly off the item it is cooked in, rendering that item useless until emptied out, so you can't cook in it again.
+This mod effectively solves that, allowing all other sensible recipes to be placed in plates.
 
-This mod aims to solve that, by adding adding more items to serve food on: ceramic plates, plastic plates, and serving trays.
+This mod calculates the net weight of the food, divides it for however many plates it has been split into, and adds it to each plate. 
+You can place every sensible cookable recipe into plates, except Soup and Stew. There are bowls for those.
 
-- Plastic plates are the lightest, but they cannot handle the heat of food being cooked.
-- Serving Trays are the heaviest, they can handle the heat of food being cooked, but they cannot handle microwaves very well.
-- Ceramic plates are lighter than serving trays, and they can handle both heat and microwaves.
+What you can place into plates:
 
-Ceramic and Plastic plates occur in the world as normal loot, while serving trays have to be manually crafted.
-The recipe for serving trays can be found in the Carpentry category in-game, with no level requirement.
 
-When placing food in a serving item, the mod will try to calculate the net weight of the food, and add it to the empty weight of the item.
-When eating from a serving item, the mod will subtract the weight that has been eaten away, unless it has been eaten entirely.
-
-You can place every cookable recipe into plates, except Soup, and Stew. There are bowls for those.
 Raw ingredients (Vegetables, fruit, meat) cannot be placed into plates either.
 
 Current supported languages are English and Italian.
