@@ -9,86 +9,52 @@ module ServingItems
 		Tooltip = Tooltip_item_HalfPlank
 	}
 
-	item CeramicPlate
-	{
-		Weight	=	0.3,
-		Type	=	Normal,
-		DisplayName	=	Ceramic plate,
-		Icon	=	EmptyCeramicPlate,
-		Tooltip = Tooltip_item_EmptyCeramicPlate,
-	}
-
-	item PlasticPlate
-	{
-		Weight	=	0.01,
-		Type	=	Normal,
-		DisplayName	=	Plastic plate,
-		Icon	=	EmptyPlasticPlate,
-		Tooltip = Tooltip_item_EmptyPlasticPlate
-	}
-
-	item WoodenTray
+	item ServingTray
 	{
 		Weight	=	0.5,
 		Type	=	Normal,
-		DisplayName	=	Wooden tray,
-		Icon	=	EmptyWoodenTray,
-		Tooltip = Tooltip_item_EmptyWoodenTray,
+		DisplayName	=	Serving Tray,
+		Icon	=	EmptyServingTray,
+		Tooltip = Tooltip_item_EmptyServingTray,
 		MetalValue = 1,
 	}
-	
-	item MoltenPlasticAndFood
+
+	item QuarterLog
 	{
-		Weight = 0.05,
-		Type = Food,
-		DisplayName = Molten plastic and food,
-		Icon	=	MoltenPlasticAndFood,
-		HungerChange	=	-5,
-		Carbohydrates = 6,
-        Proteins = 3,
-        Lipids = 1.5,
-		Calories = 50,
-		DaysFresh	=	1,
-        DaysTotallyRotten	=	2,
-		MinutesToCook = 0,
-        MinutesToBurn	=	15,
-		UnhappyChange	=	20,
-		Poison = true,
-		PoisonDetectionLevel = 10,
-	    PoisonPower = 5,
-		IsCookable = true,
-		DangerousUncooked	=	false,
-		Tooltip = Tooltip_item_MoltenPlasticAndFood,
+		Weight	=	2.25,
+		Type	=	Normal,
+		DisplayName	=	Quarter log,
+		Icon	=	QuarterLog,
+		Tooltip = Tooltip_item_QuarterLog
 	}
 
-	item FullCeramicPlate
+	item ServingTray
+	{
+		Weight	=	0.5,
+		Type	=	Normal,
+		DisplayName	=	Serving Tray,
+		Icon	=	EmptyServingTray,
+		Tooltip = Tooltip_item_EmptyServingTray,
+		MetalValue = 1,
+	}
+
+	item FullPlate
 	{
 		Weight	=	0.3,
 		Type	=	Food,
 		DisplayName	=	Ceramic plate,
-		Icon	=	FullCeramicPlate,
-		ReplaceOnUse	=	CeramicPlate,
+		Icon	=	FullPlate,
+		ReplaceOnUse	=	Plate,
 		OnEat = ServingItems_OnEat,
 	}
 
-	item FullPlasticPlate
-	{
-		Weight	=	0.01,
-		Type	=	Food,
-		DisplayName	=	Plastic plate,
-		Icon	=	FullPlasticPlate,
-		ReplaceOnUse	=	PlasticPlate,
-		OnEat = ServingItems_OnEat,
-		ReplaceOnCooked = ServingItems.MoltenPlasticAndFood,
-	}
-
-	item FullWoodenTray
+	item FullServingTray
 	{
 		Weight	=	0.5,
 		Type	=	Food,
-		DisplayName	=	Wooden tray,
-		Icon	=	FullWoodenTray,
-		ReplaceOnUse	=	WoodenTray,
+		DisplayName	=	Serving Tray,
+		Icon	=	FullServingTray,
+		ReplaceOnUse	=	ServingTray,
 		OnEat = ServingItems_OnEat,
 		MetalValue = 1,
 	}

@@ -3,7 +3,7 @@ ServingItems.RecipeBaseItems = {
     -- ["PotOfSoup"] = "Base.Pot",
     -- ["PotOfSoupRecipe"] = "Base.Pot",
     ["WaterPotRice"] = "Base.Pot",
-    ["Pas-- taPot"] = "Base.Pot",
+    ["PastaPot"] = "Base.Pot",
     ["RicePot"] = "Base.Pot",
     -- ["PotOfStew"] = "Base.Pot",
     ["RicePan"] = "Base.Saucepan",
@@ -28,39 +28,27 @@ ServingItems.ItemInstances = {
     ["Base.Pan"] = InventoryItemFactory.CreateItem("Base.Pan"),
     ["Base.RoastingPan"] = InventoryItemFactory.CreateItem("Base.RoastingPan"),
     ["Base.Bowl"] = InventoryItemFactory.CreateItem("Base.Bowl"),
-    ["ServingItems.CeramicPlate"] = InventoryItemFactory.CreateItem("ServingItems.CeramicPlate"),
-    ["ServingItems.PlasticPlate"] = InventoryItemFactory.CreateItem("ServingItems.PlasticPlate"),
+    ["Base.Plate"] = InventoryItemFactory.CreateItem("Base.Plate"),
     ["ServingItems.WoodenBowl"] = InventoryItemFactory.CreateItem("ServingItems.WoodenBowl"),
-    ["ServingItems.WoodenTray"] = InventoryItemFactory.CreateItem("ServingItems.WoodenTray"),
-    ["ServingItems.FullCeramicPlate"] = InventoryItemFactory.CreateItem("ServingItems.FullCeramicPlate"),
-    ["ServingItems.FullPlasticPlate"] = InventoryItemFactory.CreateItem("ServingItems.FullPlasticPlate"),
+    ["ServingItems.ServingTray"] = InventoryItemFactory.CreateItem("ServingItems.ServingTray"),
+    ["ServingItems.FullPlate"] = InventoryItemFactory.CreateItem("ServingItems.FullPlate"),
     ["ServingItems.FullWoodenBowl"] = InventoryItemFactory.CreateItem("ServingItems.FullWoodenBowl"),
-    ["ServingItems.FullWoodenTray"] = InventoryItemFactory.CreateItem("ServingItems.FullWoodenTray")
+    ["ServingItems.FullServingTray"] = InventoryItemFactory.CreateItem("ServingItems.FullServingTray")
 }
 
 ServingItems.RecipeSuffixes = {
-    ["ServingItems.FullCeramicPlate"] = "in a Ceramic Plate",
-    ["ServingItems.FullPlasticPlate"] = "in a Plastic Plate",
+    ["ServingItems.FullPlate"] = "in a Plate",
     -- ["ServingItems.FullWoodenBowl"] = "in a Wooden Bowl",
-    ["ServingItems.FullWoodenTray"] = "on a Wooden Tray"
+    ["ServingItems.FullServingTray"] = "on a Serving Tray"
 }
 
 ServingItems.EmptyCounterparts = {
-    ["ServingItems.FullCeramicPlate"] = "ServingItems.CeramicPlate",
-    ["ServingItems.FullPlasticPlate"] = "ServingItems.PlasticPlate",
+    ["ServingItems.FullPlate"] = "Base.Plate",
     -- ["ServingItems.FullWoodenBowl"] = "ServingItems.WoodenBowl",
-    ["ServingItems.FullWoodenTray"] = "ServingItems.WoodenTray"
+    ["ServingItems.FullServingTray"] = "ServingItems.ServingTray"
 }
 
 ServingItems.NameCalcFunctions = {
-    --[[ ["PotOfSoup"] = function(name, type)
-        return getItemText("Soup " .. ServingItems.RecipeSuffixes[type]);
-    end,
-
-    ["PotOfSoupRecipe"] = function(name, type)
-        return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
-    end,]]
-
     ["WaterPotRice"] = function(name, type)
         return getItemText("Rice " .. ServingItems.RecipeSuffixes[type]);
     end,
@@ -72,10 +60,6 @@ ServingItems.NameCalcFunctions = {
     ["RicePot"] = function(name, type)
         return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
     end,
-
-    --[[ ["PotOfStew"] = function(name, type)
-        return ({string.gsub(name, "%s*%b()%s*", "")})[1];
-    end,]]
 
     ["RicePan"] = function(name, type)
         return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";

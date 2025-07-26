@@ -1,7 +1,4 @@
 Tooltip_IT = {
-	Tooltip_item_EmptyPlasticPlate = "Un contenitore scadente per il servire cibo. Non adatto alle fonti di calore.",
-	Tooltip_item_EmptyCeramicPlate = "Un contenitore di alta qualita' per servire il cibo. Resistente al calore.",
-	Tooltip_item_EmptyWoodenTray = "Un contenitore improvvisato per servire il cibo, non adatto ai forni a microonde.",
+	Tooltip_item_EmptyServingTray = "Un contenitore improvvisato per servire il cibo, non adatto ai forni a microonde.",
 	Tooltip_item_HalfPlank = "Un'asse di legno tagliata a meta', serve a ben poco attualmente...",
-	Tooltip_item_MoltenPlasticAndFood = "Immagino sia ora di liberarsi del cuoco...",
 }
