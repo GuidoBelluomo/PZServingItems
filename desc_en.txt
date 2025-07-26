@@ -1,0 +1,24 @@
+This mod adds more serving items other than bowls.
+
+At the moment, the game only allows placing soup, stew, pasta, and rice into bowls. Anything else must be eaten directly off the item it is cooked in, rendering that item useless until emptied out.
+
+This mod aims to solve that, by adding adding more items to serve food on: ceramic plates, plastic plates, and wooden trays.
+
+- Plastic plates are the lightest, but they cannot handle the heat of food being cooked.
+- Wooden trays are the heaviest, they can handle the heat of food being cooked, but they cannot handle microwaves very well.
+- Ceramic plates are lighter than wooden trays, and they can handle both heat and microwaves.
+
+Ceramic and Plastic plates occur in the world as normal loot, while wooden trays have to be manually crafted.
+The recipe for wooden trays can be found in the Carpentry category in-game, with no level requirement.
+
+When placing food in a serving item, the mod will try to calculate the net weight of the food, and add it to the empty weight of the item.
+When eating from a serving item, the mod will subtract the weight that has been eaten away, unless it has been eaten entirely.
+
+You can place every cookable recipe into plates, except Soup, and Stew. There are bowls for those.
+Raw ingredients (Vegetables, fruit, meat) cannot be placed into plates either.
+
+Current supported languages are English and Italian.
+
+Workshop ID: 1261202319
+Mod ID: ServingItems
+Tags: cooking,plates,serving,food,plate

@@ -1,0 +1,234 @@
+module ServingItems
+{
+	recipe Saw Plank in Half
+	{
+		Base.Plank,
+		keep Base.Saw,
+
+		Result:HalfPlank=2,
+	   	CanBeDoneFromFloor:true,
+		Sound:PZ_Saw,
+		Time:60,
+		Category:Carpentry,
+	}
+
+	recipe Carve Wooden Tray
+	{
+		HalfPlank,
+		keep Base.Hammer,
+		keep Base.KitchenKnife/Base.HuntingKnife,
+		keep Base.Saw,
+
+		Result:WoodenTray=1,
+		CanBeDoneFromFloor:true,
+		Sound:PZ_Saw,
+		Time:200,
+		Category:Carpentry,
+	   	OnGiveXP:GiveSawLogsXP,
+	}
+
+	recipe Put Food in 1 Ceramic Plate
+	{
+		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
+		CeramicPlate=1,
+
+		Result:FullCeramicPlate=1,
+		OnCreate:PutIn1ServingItems_OnCreate,
+		Time:80.0,
+		Category:Cooking,
+		OnGiveXP:NoXP_OnGiveXP,
+		RemoveResultItem:true,
+	}
+
+	recipe Put Food in 2 Ceramic Plates
+	{
+		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
+		CeramicPlate=2,
+
+		Result:FullCeramicPlate=2,
+		OnCreate:PutIn2ServingItems_OnCreate,
+		Time:80.0,
+		Category:Cooking,
+		OnGiveXP:NoXP_OnGiveXP,
+		RemoveResultItem:true,
+	}
+
+	recipe Put Food in 3 Ceramic Plates
+	{
+		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
+		CeramicPlate=3,
+
+		Result:FullCeramicPlate=3,
+		OnCreate:PutIn2ServingItems_OnCreate,
+		Time:80.0,
+		Category:Cooking,
+		OnGiveXP:NoXP_OnGiveXP,
+		RemoveResultItem:true,
+	}
+
+	recipe Put Food in 4 Ceramic Plates
+	{
+		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
+		CeramicPlate=4,
+
+		Result:FullCeramicPlate=4,
+		OnCreate:PutIn4ServingItems_OnCreate,
+		Time:80.0,
+		Category:Cooking,
+		OnGiveXP:NoXP_OnGiveXP,
+		RemoveResultItem:true,
+	}
+
+	recipe Put Food in 5 Ceramic Plates
+	{
+		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
+		CeramicPlate=5,
+
+		Result:FullCeramicPlate=5,
+		OnCreate:PutIn5ServingItems_OnCreate,
+		Time:80.0,
+		Category:Cooking,
+		OnGiveXP:NoXP_OnGiveXP,
+		RemoveResultItem:true,
+	}
+
+	recipe Put Food in 1 Plastic Plate
+	{
+		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
+		PlasticPlate=1,
+
+		Result:FullPlasticPlate=1,
+		OnCreate:PutIn1ServingItems_OnCreate,
+		Time:80.0,
+		Category:Cooking,
+		OnGiveXP:NoXP_OnGiveXP,
+		RemoveResultItem:true,
+	}
+
+	recipe Put Food in 2 Plastic Plates
+	{
+		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
+		PlasticPlate=2,
+
+		Result:FullPlasticPlate=2,
+		OnCreate:PutIn2ServingItems_OnCreate,
+		Time:80.0,
+		Category:Cooking,
+		OnGiveXP:NoXP_OnGiveXP,
+		RemoveResultItem:true,
+	}
+
+	recipe Put Food in 3 Plastic Plates
+	{
+		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
+		PlasticPlate=3,
+
+		Result:FullPlasticPlate=3,
+		OnCreate:PutIn2ServingItems_OnCreate,
+		Time:80.0,
+		Category:Cooking,
+		OnGiveXP:NoXP_OnGiveXP,
+		RemoveResultItem:true,
+	}
+
+	recipe Put Food in 4 Plastic Plates
+	{
+		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
+		PlasticPlate=4,
+
+		Result:FullPlasticPlate=4,
+		OnCreate:PutIn4ServingItems_OnCreate,
+		Time:80.0,
+		Category:Cooking,
+		OnGiveXP:NoXP_OnGiveXP,
+		RemoveResultItem:true,
+	}
+
+	recipe Put Food in 5 Plastic Plates
+	{
+		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
+		PlasticPlate=5,
+
+		Result:FullPlasticPlate=5,
+		OnCreate:PutIn5ServingItems_OnCreate,
+		Time:80.0,
+		Category:Cooking,
+		OnGiveXP:NoXP_OnGiveXP,
+		RemoveResultItem:true,
+	}
+
+	recipe Put Food on 1 Wooden Tray
+	{
+		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
+		WoodenTray=1,
+
+		Result:FullWoodenTray=1,
+		OnCreate:PutIn1ServingItems_OnCreate,
+		Time:80.0,
+		Category:Cooking,
+		OnGiveXP:NoXP_OnGiveXP,
+		RemoveResultItem:true,
+	}
+
+	recipe Put Food on 2 Wooden Trays
+	{
+		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
+		WoodenTray=2,
+
+		Result:FullWoodenTray=2,
+		OnCreate:PutIn2ServingItems_OnCreate,
+		Time:80.0,
+		Category:Cooking,
+		OnGiveXP:NoXP_OnGiveXP,
+		RemoveResultItem:true,
+	}
+
+	recipe Put Food on 3 Wooden Trays
+	{
+		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
+		WoodenTray=3,
+
+		Result:FullWoodenTray=3,
+		OnCreate:PutIn2ServingItems_OnCreate,
+		Time:80.0,
+		Category:Cooking,
+		OnGiveXP:NoXP_OnGiveXP,
+		RemoveResultItem:true,
+	}
+
+	recipe Put Food on 4 Wooden Trays
+	{
+		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
+		WoodenTray=4,
+
+		Result:FullWoodenTray=4,
+		OnCreate:PutIn4ServingItems_OnCreate,
+		Time:80.0,
+		Category:Cooking,
+		OnGiveXP:NoXP_OnGiveXP,
+		RemoveResultItem:true,
+	}
+
+	recipe Put Food on 5 Wooden Trays
+	{
+		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
+		WoodenTray=5,
+
+		Result:FullWoodenTray=5,
+		OnCreate:PutIn5ServingItems_OnCreate,
+		Time:80.0,
+		Category:Cooking,
+		OnGiveXP:NoXP_OnGiveXP,
+		RemoveResultItem:true,
+	}
+
+	recipe Pour on Ground
+	{
+		FullCeramicPlate/FullPlasticPlate/FullWoodenTray,
+
+		Result: PlasticPlate,
+		OnCreate:EmptyServingItem_OnCreate,
+		Time:5.0,
+		RemoveResultItem:true,
+	}
+}

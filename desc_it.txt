@@ -1,0 +1,24 @@
+Questa mod aggiunge più oggetti per servire il cibo, oltre alle scodelle.
+
+Attualmente, il gioco consente solo di mettere la pasta, il risto, la zuppa, e lo stufato all'interno delle scodelle. Qualsiasi altro oggetto deve essere mangiato direttamente dal contenitore in cui è stato cotto, rendendo quel contenitore inutile finchè non viene svuotato.
+
+Questa mod vuole risolvere questo problema, aggiungendo: piatti di ceramica, piatti di plastica, e vassoi di legno.
+
+- I piatti di plastica sono i più leggeri, ma non reggono il calore della cottura.
+- I vassoi di legno sono i più pesanti, reggono il calore della cottura ma non reagiscono bene col forno a microonde.
+- I piatti di ceramica pesano più dei piatti di plastica ma meno dei vassoi di legno, e reggono sia il calore che le microonde.
+
+I piatti di ceramica e i piatti di plastica si trovano tranquillamente nella mappa, mentre i vassoi devono essere costruiti manualmente.
+La ricetta per i vassoi di legno può essere tranquillamente trovata nel menu di crafting, nella sezione carpenteria.
+
+Quando si mette del cibo in uno di questi oggetti, la mod cercherà di calcolare il peso netto del cibo, e lo sommerà al peso vuoto dell'oggetto.
+Quando si mangia da uno di questi oggetti, la mod sottrarrà il peso della quantità di cibo mangiata.
+
+Piatti e vassoi possono contenere quasi tutte le ricette del gioco, tranne la zuppa e lo stufato, che vanno messi nelle scodelle già presenti nel gioco.
+Ingredienti di base (Frutta, verdura, carne) non possono essere messi al loro interno.
+
+Le lingue attuali supportate sono l'italiano, e l'inglese.
+
+Workshop ID: 1261202319
+Mod ID: ServingItems
+Tags: cooking,plates,serving,food,plate,cottura,cucinare,piatti,servire,cibo,piatto

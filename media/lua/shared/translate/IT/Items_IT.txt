@@ -1,0 +1,15 @@
+Items_IT = {
+	DisplayNameCeramic_plate = "Piatto di ceramica",
+	DisplayNamePlastic_plate = "Piatto di plastica",
+	DisplayNameHalf_plank = "Metà asse",
+	DisplayNameWooden_tray = "Vassoio di legno",
+	DisplayNameMolten_plastic_and_food = "Plastica sciolta con cibo",
+	DisplayNamePasta_in_a_ceramic_plate = "Pasta in un piatto di ceramica",
+	DisplayNamePasta_in_a_plastic_plate = "Pasta in un ciatto di plastica",
+	DisplayNamePasta_in_a_wooden_bowl = "Pasta in una Scodella di legno",
+	DisplayNamePasta_on_a_Wooden_tray = "Pasta su un vassoio di legno",
+	DisplayNameRice_in_a_ceramic_plate = "Riso in un piatto di ceramica",
+	DisplayNameRice_in_a_plastic_plate = "Riso in un piatto di plastica",
+	DisplayNameRice_in_a_wooden_bowl = "Riso in una scodella di legno",
+	DisplayNameRice_on_a_wooden_tray = "Riso su un vassoio di legno"
+}

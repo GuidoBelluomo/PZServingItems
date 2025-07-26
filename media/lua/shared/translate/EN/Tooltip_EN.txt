@@ -1,0 +1,7 @@
+Tooltip_EN = {
+	Tooltip_item_EmptyPlasticPlate = "A poor container for serving food. Doesn't do well with heat at all.",
+	Tooltip_item_EmptyCeramicPlate = "A high quality container for serving food. Copes really well with heat.",
+	Tooltip_item_EmptyWoodenTray = "An improvised container for serving food. Doesn't like microwave ovens.",
+	Tooltip_item_HalfPlank = "A wooden plank sawn in half, doesn't do much right now...",
+	Tooltip_item_MoltenPlasticAndFood = "Suppose it's time to get rid of the cook...",
+}
