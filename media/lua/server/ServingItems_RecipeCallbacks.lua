@@ -2,7 +2,9 @@ local ServingItems = {};
 -- Hashmap-like structure
 ServingItems.PlateableItems = {
     ["Base.PieWholeRaw"] = true,
+    ["Base.Pie"] = true,
     ["Base.CakeRaw"] = true,
+    ["Base.GriddlePanFriedVegetables"] = true,
     ["Base.PanFriedVegetables"] = true,
     ["Base.PanFriedVegetables2"] = true,
     ["Base.Sandwich"] = true,
@@ -14,13 +16,22 @@ ServingItems.PlateableItems = {
 
 ServingItems.ItemInstances = {
     ["ServingItems.FullPlate"] = InventoryItemFactory.CreateItem("ServingItems.FullPlate"),
-    ["ServingItems.FullPlateBlue"] = InventoryItemFactory.CreateItem("ServingItems.FullPlate"),
-    ["ServingItems.FullPlateOrange"] = InventoryItemFactory.CreateItem("ServingItems.FullPlate"),
-    ["ServingItems.FullPlateFancy"] = InventoryItemFactory.CreateItem("ServingItems.FullPlate"),
+    ["ServingItems.FullPlateBlue"] = InventoryItemFactory.CreateItem("ServingItems.FullPlateBlue"),
+    ["ServingItems.FullPlateOrange"] = InventoryItemFactory.CreateItem("ServingItems.FullPlateOrange"),
+    ["ServingItems.FullPlateFancy"] = InventoryItemFactory.CreateItem("ServingItems.FullPlateFancy"),
 }
 
-ServingItems:GetItemInstance(name) {
-    if (~string.find(name, ".")) then
+
+
+ServingItems.FullPlateCounterparts = {
+    ["Base.Plate"] = "ServingItems.FullPlate",
+    ["Base.PlateBlue"] = "ServingItems.FullPlateBlue",
+    ["Base.PlateOrange"] = "ServingItems.FullPlateOrange",
+    ["Base.PlateFancy"] = "ServingItems.FullPlateFancy",
+}
+
+function ServingItems:GetItemInstance(name)
+    if not string.find(name, ".", 1, true) then
         name = "Base." .. name
     end
 
@@ -32,7 +43,7 @@ ServingItems:GetItemInstance(name) {
         self.ItemInstances[name] = item
         return item
     end
-}
+end
 
 ServingItems.RecipeSuffixes = {
     ["ServingItems.FullPlate"] = "in a Plate",
@@ -41,61 +52,21 @@ ServingItems.RecipeSuffixes = {
     ["ServingItems.FullPlateFancy"] = "in a Plate",
 }
 
-ServingItems.EmptyCounterparts = {
-    ["ServingItems.FullPlate"] = "Base.Plate",
-    ["ServingItems.FullPlateBlue"] = "Base.PlateBlue",
-    ["ServingItems.FullPlateOrange"] = "Base.PlateOrange",
-    ["ServingItems.FullPlateFancy"] = "Base.PlateFancy",
-}
-
-ServingItems.NameCalcFunctions = {
-    ["PieWholeRaw"] = function(name, type)
-        return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
-    end,
-
-    ["Pie"] = function(name, type)
-        return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
-    end,
-
-    ["CakeRaw"] = function(name, type)
-        return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
-    end,
-
-    ["PanFriedVegetables"] = function(name, type)
-        return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
-    end,
-
-    ["PanFriedVegetables2"] = function(name, type)
-        return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
-    end,
-
-    ["Sandwich"] = function(name, type)
-        return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
-    end,
-
-    ["BurgerRecipe"] = function(name, type)
-        return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
-    end,
-
-    ["Salad"] = function(name, type)
-        return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
-    end,
-
-    ["FruitSalad"] = function(name, type)
-        return ({string.gsub(name, "%s*%b()%s*", "")})[1]  .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
-    end,
-}
+function ServingItems:NameCalcFunction(name, type)
+    -- We gotta remove the Raw, Rotten, Fresh etc. suffixes, add the container's name, and just let the game re-add them based on item data 
+    return ({string.gsub(name, "%s*%b()%s*", "")})[1] .. " (" .. ServingItems.ItemInstances[type]:getName() .. ")";
+end
 
 local maxSplitting = 5;
 for i=1,maxSplitting do
     _G["PutIn"..i.."ServingItems_OnCreate"] = function (items, result, player)
-        local resultType = result:getFullType();
         for j=0,items:size() - 1 do
             local item = items:get(j);
-            local itemType = item:getType();
+            local resultType = ServingItems.FullPlateCounterparts[item:getFullType()];
+            local itemType = item:getFullType();
             local canSplit = ServingItems.PlateableItems[itemType] ~= nil;
-            local baseItem = item::getReplaceOnUse();
-            if canSplit then
+            local baseItem = item:getReplaceOnUse();
+            if canSplit then    
                 for k=1, i do -- It seems like adding the item manually by recreating it is the only way, as multiple result items don't do well with setName and mod data
                     result = InventoryItemFactory.CreateItem(resultType);
                     result:setBaseHunger(item:getBaseHunger() / i);
@@ -122,7 +93,6 @@ for i=1,maxSplitting do
                     result:setMinutesToBurn(item:getMinutesToBurn());
                     result:setOffAge(item:getOffAge());
                     result:setOffAgeMax(item:getOffAgeMax());
-                    result:setAge(item:getAge());
                     result:setLastAged(item:getLastAged());
                     result:setFrozen(item:isFrozen());
                     result:setCanBeFrozen(item:canBeFrozen());
@@ -143,7 +113,7 @@ for i=1,maxSplitting do
                     result:setCustomEatSound(item:getCustomEatSound());
                     result:setChef(item:getChef());
                     result:setHerbalistType(item:getHerbalistType());
-                    result:setName(ServingItems.NameCalcFunctions[itemType](item:getName(), resultType));
+                    result:setName(ServingItems:NameCalcFunction(item:getName(), resultType));
     
                     --[[
                     result:setSpices(item:getSpices());
@@ -196,6 +166,8 @@ function ServingItems_OnEat(item, character)
 end
 
 function EmptyServingItem_OnCreate(items, result, player)
-    local type = items:get(0):getFullType();
-    player:getInventory():AddItem(ServingItems.EmptyCounterparts[type]);
+    for i=0,items:size() - 1 do
+        local item = ServingItems:GetItemInstance(items:get(i):getReplaceOnUse())
+        player:getInventory():AddItem(item:getFullType());
+    end
 end

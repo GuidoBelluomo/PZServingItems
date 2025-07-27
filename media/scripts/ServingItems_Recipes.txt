@@ -67,9 +67,9 @@ module ServingItems
 
 	recipe Pour on Ground
 	{
-		FullCeramicPlate/FullPlasticPlate/FullWoodenTray,
+		FullPlate/FullPlateBlue/FullPlateOrange/FullPlateFancy,
 
-		Result: PlasticPlate,
+		Result: FullPlate,
 		OnCreate:EmptyServingItem_OnCreate,
 		Time:5.0,
 		RemoveResultItem:true,
