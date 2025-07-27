@@ -2,10 +2,11 @@ module ServingItems
 {
 	recipe Put Food in 1 Plate
 	{
-		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
-		Base.Plate=1,
+		Base.Pie/Base.PieWholeRaw/Base.CakeRaw/Base.GriddlePanFriedVegetables/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad,
+		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
 
 		Result:FullPlate=1,
+		OnCanPerform: ServingItems.CanDoNPlates,
 		OnCreate:PutIn1ServingItems_OnCreate,
 		Time:80.0,
 		Category:Cooking,
@@ -15,10 +16,12 @@ module ServingItems
 
 	recipe Put Food in 2 Plates
 	{
-		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
-		Base.Plate=2,
+		Base.Pie/Base.PieWholeRaw/Base.CakeRaw/Base.GriddlePanFriedVegetables/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad,
+		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
+		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
 
 		Result:FullPlate=2,
+		OnCanPerform: ServingItems.CanDoNPlates,
 		OnCreate:PutIn2ServingItems_OnCreate,
 		Time:80.0,
 		Category:Cooking,
@@ -28,10 +31,13 @@ module ServingItems
 
 	recipe Put Food in 3 Plates
 	{
-		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
-		Base.Plate=3,
+		Base.Pie/Base.PieWholeRaw/Base.CakeRaw/Base.GriddlePanFriedVegetables/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad,
+		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
+		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
+		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
 
 		Result:FullPlate=3,
+		OnCanPerform: ServingItems.CanDoNPlates,
 		OnCreate:PutIn2ServingItems_OnCreate,
 		Time:80.0,
 		Category:Cooking,
@@ -41,10 +47,14 @@ module ServingItems
 
 	recipe Put Food in 4 Plates
 	{
-		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
-		Base.Plate=4,
+		Base.Pie/Base.PieWholeRaw/Base.CakeRaw/Base.GriddlePanFriedVegetables/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad,
+		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
+		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
+		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
+		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
 
 		Result:FullPlate=4,
+		OnCanPerform: ServingItems.CanDoNPlates,
 		OnCreate:PutIn4ServingItems_OnCreate,
 		Time:80.0,
 		Category:Cooking,
@@ -54,10 +64,15 @@ module ServingItems
 
 	recipe Put Food in 5 Plates
 	{
-		Base.Pie/Base.WaterPotRice/Base.PastaPot/Base.RicePot/Base.RicePan/Base.PastaPan/Base.PieWholeRaw/Base.CakeRaw/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad/Base.WaterSaucepanPasta/Base.WaterSaucepanRice/Base.WaterPotPasta,
-		Base.Plate=5,
+		Base.Pie/Base.PieWholeRaw/Base.CakeRaw/Base.GriddlePanFriedVegetables/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad,
+		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
+		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
+		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
+		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
+		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
 
 		Result:FullPlate=5,
+		OnCanPerform: ServingItems.CanDoNPlates,
 		OnCreate:PutIn5ServingItems_OnCreate,
 		Time:80.0,
 		Category:Cooking,

@@ -1,4 +1,4 @@
-local ServingItems = {};
+ServingItems = {};
 -- Hashmap-like structure
 ServingItems.PlateableItems = {
     ["Base.PieWholeRaw"] = true,
@@ -21,14 +21,38 @@ ServingItems.ItemInstances = {
     ["ServingItems.FullPlateFancy"] = InventoryItemFactory.CreateItem("ServingItems.FullPlateFancy"),
 }
 
-
-
 ServingItems.FullPlateCounterparts = {
     ["Base.Plate"] = "ServingItems.FullPlate",
     ["Base.PlateBlue"] = "ServingItems.FullPlateBlue",
     ["Base.PlateOrange"] = "ServingItems.FullPlateOrange",
     ["Base.PlateFancy"] = "ServingItems.FullPlateFancy",
 }
+
+ServingItems.GetItemTypes = {}
+function ServingItems.GetItemTypes.EmptyPlates(scriptItems)
+    local scriptManager = getScriptManager()
+    for k, _ in pairs(ServingItems.FullPlateCounterparts) do
+        scriptItems:add(scriptManager:FindItem(k))
+    end
+end
+
+function ServingItems.CanDoNPlates(recipe, player, ingredient)
+    local needed = recipe:getResult():getCount()
+    local inv = player:getInventory():getItems()
+    local have = 0
+
+    for i = 0, inv:size()-1 do
+        local item = inv:get(i)
+        if ServingItems.FullPlateCounterparts[item:getFullType()] then
+            have = have + 1
+            if have >= needed then
+                return true
+            end
+        end
+    end
+
+    return false
+end
 
 function ServingItems:GetItemInstance(name)
     if not string.find(name, ".", 1, true) then
@@ -60,93 +84,103 @@ end
 local maxSplitting = 5;
 for i=1,maxSplitting do
     _G["PutIn"..i.."ServingItems_OnCreate"] = function (items, result, player)
+        local splittableItems = {}
+        local plates = {}
+
         for j=0,items:size() - 1 do
             local item = items:get(j);
-            local resultType = ServingItems.FullPlateCounterparts[item:getFullType()];
             local itemType = item:getFullType();
-            local canSplit = ServingItems.PlateableItems[itemType] ~= nil;
+            local isSplittable = ServingItems.PlateableItems[itemType] ~= nil;
+            if isSplittable then
+                splittableItems[#splittableItems + 1] = item
+            end
+        end
+        
+        local inventory = player:getInventory()
+        local inventoryItems = inventory:getItems()
+        for j = 0, inventoryItems:size()-1 do
+            local item = inventoryItems:get(j)
+            if ServingItems.FullPlateCounterparts[item:getFullType()] then
+                plates[#plates + 1] = item
+                if #plates >= i then
+                    break
+                end
+            end
+        end
+
+        for _, item in ipairs(splittableItems) do
             local baseItem = item:getReplaceOnUse();
-            if canSplit then    
-                for k=1, i do -- It seems like adding the item manually by recreating it is the only way, as multiple result items don't do well with setName and mod data
-                    result = InventoryItemFactory.CreateItem(resultType);
-                    result:setBaseHunger(item:getBaseHunger() / i);
-                    result:setHungChange(item:getBaseHunger() / i);
-                    result:setThirstChange(item:getThirstChange() / i);
-                    result:setBoredomChange(item:getBoredomChange() / i);
-                    result:setUnhappyChange(item:getUnhappyChange() / i);
-                    result:setCarbohydrates(item:getCarbohydrates() / i);
-                    result:setLipids(item:getLipids() / i);
-                    result:setProteins(item:getProteins() / i);
-                    result:setCalories(item:getCalories() / i);
-                    result:setReduceFoodSickness(item:getReduceFoodSickness() / i);
-                    result:setFluReduction(item:getFluReduction() / i);
-                    result:setPainReduction(item:getPainReduction() / i);
-                    result:setPoisonPower(item:getPoisonPower() / i);
-                    result:setTaintedWater(item:isTaintedWater());
-                    result:setRotten(item:isRotten());
-                    result:setBurnt(item:isBurnt());
-                    result:setAge(item:getAge());
-                    result:setCooked(item:isCooked());
-                    result:setIsCookable(item:isIsCookable());
-                    result:setCookingTime(item:getCookingTime());
-                    result:setMinutesToCook(item:getMinutesToCook());
-                    result:setMinutesToBurn(item:getMinutesToBurn());
-                    result:setOffAge(item:getOffAge());
-                    result:setOffAgeMax(item:getOffAgeMax());
-                    result:setLastAged(item:getLastAged());
-                    result:setFrozen(item:isFrozen());
-                    result:setCanBeFrozen(item:canBeFrozen());
-                    result:setFreezingTime(item:getFreezingTime());
-                    result:setRottenTime(item:getRottenTime());
-                    result:setCompostTime(item:getCompostTime());
-                    result:setBadInMicrowave(item:isBadInMicrowave());
-                    result:setBadCold(item:isBadCold());
-                    result:setGoodHot(item:isGoodHot());
-                    result:setHeat(item:getHeat());
-                    result:setbDangerousUncooked(item:isbDangerousUncooked());
-                    result:setLastCookMinute(item:getLastCookMinute());
-                    result:setSpice(item:isSpice());
-                    result:setPoisonDetectionLevel(item:getPoisonDetectionLevel());
-                    result:setPoisonLevelForRecipe(item:getPoisonLevelForRecipe());
-                    result:setUseForPoison(item:getUseForPoison());
-                    result:setFoodType(item:getFoodType());
-                    result:setCustomEatSound(item:getCustomEatSound());
-                    result:setChef(item:getChef());
-                    result:setHerbalistType(item:getHerbalistType());
-                    result:setName(ServingItems:NameCalcFunction(item:getName(), resultType));
-    
-                    --[[
-                    result:setSpices(item:getSpices());
-    
-                    local extraItems = item:getExtraItems() // Not a KahluaTable
-                    for k, v in pairs(extraItems) do
-                        result:addExtraItem(v);
-                    end
-                    ]]--
-    
-                    local baseItemWeight = 0;
-                    local emptyItemWeight = result:getWeight();
-                    local ingredientWeight = item:getWeight();
-                    if baseItem then
-                        baseItemWeight = ServingItems:GetItemInstance(baseItem):getWeight();
-                    end
-                    
-                    local foodWeight = math.abs((ingredientWeight - baseItemWeight) / i); -- Some food items weigh less than their base item, this is my "fix"
-    
-                    result:setWeight(emptyItemWeight + foodWeight);
-                    result:setActualWeight(emptyItemWeight + foodWeight);
-                    local modData = result:getModData();
-                    modData.emptyItemWeight = emptyItemWeight;
-                    modData.foodWeight = foodWeight;
+            for k=1, i do -- It seems like adding the item manually by recreating it is the only way, as multiple result items don't do well with setName and mod data
+                local emptyPlate = table.remove(plates)
+                local fullPlateType = ServingItems.FullPlateCounterparts[emptyPlate:getFullType()];
+                result = InventoryItemFactory.CreateItem(fullPlateType);
+                result:setBaseHunger(item:getBaseHunger() / i);
+                result:setHungChange(item:getBaseHunger() / i);
+                result:setThirstChange(item:getThirstChange() / i);
+                result:setBoredomChange(item:getBoredomChange() / i);
+                result:setUnhappyChange(item:getUnhappyChange() / i);
+                result:setCarbohydrates(item:getCarbohydrates() / i);
+                result:setLipids(item:getLipids() / i);
+                result:setProteins(item:getProteins() / i);
+                result:setCalories(item:getCalories() / i);
+                result:setReduceFoodSickness(item:getReduceFoodSickness() / i);
+                result:setFluReduction(item:getFluReduction() / i);
+                result:setPainReduction(item:getPainReduction() / i);
+                result:setPoisonPower(item:getPoisonPower() / i);
+                result:setTaintedWater(item:isTaintedWater());
+                result:setRotten(item:isRotten());
+                result:setBurnt(item:isBurnt());
+                result:setAge(item:getAge());
+                result:setCooked(item:isCooked());
+                result:setIsCookable(item:isIsCookable());
+                result:setCookingTime(item:getCookingTime());
+                result:setMinutesToCook(item:getMinutesToCook());
+                result:setMinutesToBurn(item:getMinutesToBurn());
+                result:setOffAge(item:getOffAge());
+                result:setOffAgeMax(item:getOffAgeMax());
+                result:setLastAged(item:getLastAged());
+                result:setFrozen(item:isFrozen());
+                result:setCanBeFrozen(item:canBeFrozen());
+                result:setFreezingTime(item:getFreezingTime());
+                result:setRottenTime(item:getRottenTime());
+                result:setCompostTime(item:getCompostTime());
+                result:setBadInMicrowave(item:isBadInMicrowave());
+                result:setBadCold(item:isBadCold());
+                result:setGoodHot(item:isGoodHot());
+                result:setHeat(item:getHeat());
+                result:setbDangerousUncooked(item:isbDangerousUncooked());
+                result:setLastCookMinute(item:getLastCookMinute());
+                result:setSpice(item:isSpice());
+                result:setPoisonDetectionLevel(item:getPoisonDetectionLevel());
+                result:setPoisonLevelForRecipe(item:getPoisonLevelForRecipe());
+                result:setUseForPoison(item:getUseForPoison());
+                result:setFoodType(item:getFoodType());
+                result:setCustomEatSound(item:getCustomEatSound());
+                result:setChef(item:getChef());
+                result:setHerbalistType(item:getHerbalistType());
+                result:setName(ServingItems:NameCalcFunction(item:getName(), fullPlateType));
 
-                    player:getInventory():AddItem(result);
+                local baseItemWeight = 0;
+                local emptyItemWeight = result:getWeight();
+                local ingredientWeight = item:getWeight();
+                if baseItem then
+                    baseItemWeight = ServingItems:GetItemInstance(baseItem):getWeight();
                 end
+                
+                local foodWeight = math.abs((ingredientWeight - baseItemWeight) / i); -- Some food items weigh less than their base item, this is my "fix"
 
-                if (baseItem) then
-                    player:getInventory():AddItem(baseItem);
-                end
+                result:setWeight(emptyItemWeight + foodWeight);
+                result:setActualWeight(emptyItemWeight + foodWeight);
+                local modData = result:getModData();
+                modData.emptyItemWeight = emptyItemWeight;
+                modData.foodWeight = foodWeight;
+                
+                inventory:Remove(emptyPlate);
+                inventory:AddItem(result);
+            end
 
-                break;
+            if (baseItem) then
+                inventory:AddItem(baseItem);
             end
         end
     end
