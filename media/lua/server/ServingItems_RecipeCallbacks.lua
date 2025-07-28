@@ -29,9 +29,17 @@ ServingItems.FullPlateCounterparts = {
 }
 
 ServingItems.GetItemTypes = {}
+
 function ServingItems.GetItemTypes.EmptyPlates(scriptItems)
     local scriptManager = getScriptManager()
     for k, _ in pairs(ServingItems.FullPlateCounterparts) do
+        scriptItems:add(scriptManager:FindItem(k))
+    end
+end
+
+function ServingItems.GetItemTypes.PlateableItems(scriptItems)
+    local scriptManager = getScriptManager()
+    for k, _ in pairs(ServingItems.PlateableItems) do
         scriptItems:add(scriptManager:FindItem(k))
     end
 end

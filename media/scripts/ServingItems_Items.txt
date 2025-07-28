@@ -6,9 +6,10 @@ module ServingItems
 		Type	=	Food,
         DisplayName			= Plate,
 		Icon	=	FullPlate,
-		ReplaceOnUse	=	Plate,
+		ReplaceOnUse	=	Base.Plate,
 		OnEat = ServingItems_OnEat,
 		EatType = plate,
+		StaticModel = ServingItems_Plate,
 		WorldStaticModel = Plate_Ground,
 	}
 
@@ -18,9 +19,10 @@ module ServingItems
 		Type	=	Food,
         DisplayName			= Blue Plate,
 		Icon	=	FullPlate,
-		ReplaceOnUse	=	PlateBlue,
+		ReplaceOnUse	=	Base.PlateBlue,
 		OnEat = ServingItems_OnEat,
 		EatType = plate,
+		StaticModel = ServingItems_Plate_Blue,
 		WorldStaticModel = Plate_Blue_Ground,
 	}
 
@@ -30,9 +32,10 @@ module ServingItems
 		Type	=	Food,
         DisplayName			= Orange Plate,
 		Icon	=	FullPlate,
-		ReplaceOnUse	=	PlateOrange,
+		ReplaceOnUse	=	Base.PlateOrange,
 		OnEat = ServingItems_OnEat,
 		EatType = plate,
+		StaticModel = ServingItems_Plate_Orange,
 		WorldStaticModel = Plate_Orange_Ground,
 	}
 
@@ -42,9 +45,10 @@ module ServingItems
 		Type	=	Food,
         DisplayName			= Fancy Plate,
 		Icon	=	FullPlate,
-		ReplaceOnUse	=	PlateFancy,
+		ReplaceOnUse	=	Base.PlateFancy,
 		OnEat = ServingItems_OnEat,
 		EatType = plate,
+		StaticModel = ServingItems_Plate_Fancy,
 		WorldStaticModel = Plate_Fancy_Ground,
 	}
 }

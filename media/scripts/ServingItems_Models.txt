@@ -1,0 +1,27 @@
+module ServingItems
+{
+	model ServingItems_Plate
+    {
+        mesh = HeldPlate,
+        texture = WorldItems/Plate,
+        scale = 0.25,
+    }
+	model ServingItems_Plate_Blue
+    {
+        mesh = HeldPlate,
+        texture = WorldItems/PlateBlue,
+        scale = 0.25,
+    }
+	model ServingItems_Plate_Fancy
+    {
+        mesh = HeldPlate,
+        texture = WorldItems/PlateFancy,
+        scale = 0.25,
+    }
+	model ServingItems_Plate_Orange
+    {
+        mesh = HeldPlate,
+        texture = WorldItems/PlateOrange,
+        scale = 0.25,
+    }
+}

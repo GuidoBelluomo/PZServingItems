@@ -2,7 +2,7 @@ module ServingItems
 {
 	recipe Put Food in 1 Plate
 	{
-		Base.Pie/Base.PieWholeRaw/Base.CakeRaw/Base.GriddlePanFriedVegetables/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad,
+		[ServingItems.GetItemTypes.PlateableItems],
 		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
 
 		Result:FullPlate=1,
@@ -16,7 +16,7 @@ module ServingItems
 
 	recipe Put Food in 2 Plates
 	{
-		Base.Pie/Base.PieWholeRaw/Base.CakeRaw/Base.GriddlePanFriedVegetables/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad,
+		[ServingItems.GetItemTypes.PlateableItems],
 		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
 		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
 
@@ -31,7 +31,7 @@ module ServingItems
 
 	recipe Put Food in 3 Plates
 	{
-		Base.Pie/Base.PieWholeRaw/Base.CakeRaw/Base.GriddlePanFriedVegetables/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad,
+		[ServingItems.GetItemTypes.PlateableItems],
 		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
 		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
 		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
@@ -47,7 +47,7 @@ module ServingItems
 
 	recipe Put Food in 4 Plates
 	{
-		Base.Pie/Base.PieWholeRaw/Base.CakeRaw/Base.GriddlePanFriedVegetables/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad,
+		[ServingItems.GetItemTypes.PlateableItems],
 		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
 		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
 		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
@@ -64,7 +64,7 @@ module ServingItems
 
 	recipe Put Food in 5 Plates
 	{
-		Base.Pie/Base.PieWholeRaw/Base.CakeRaw/Base.GriddlePanFriedVegetables/Base.PanFriedVegetables/Base.PanFriedVegetables2/Base.Sandwich/Base.BurgerRecipe/farming.Salad/Base.FruitSalad,
+		[ServingItems.GetItemTypes.PlateableItems],
 		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
 		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
 		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
