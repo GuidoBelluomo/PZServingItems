@@ -180,7 +180,7 @@ function ServingItems:ApplySourceFoodMetadataToPlate(source, emptySource, plate,
         plate:setName(ServingItems:NameCalcFunction(source:getName(), emptyPlate));
         local emptySourceWeight = 0;
         if emptySource then
-            emptySourceWeight = ServingItems:GetItemInstance(emptyItem):getWeight();
+            emptySourceWeight = ServingItems:GetItemInstance(emptySource):getWeight();
         end
         
         -- Some food items seemed to weigh less than their base item, math.abs is my "fix". Technically this is incorrect, but I don't like the idea of food weighing 0 or even negative.
