@@ -1,27 +1,52 @@
 module ServingItems
 {
-	model ServingItems_Plate
+	model ServingItems_Full_Plate
     {
-        mesh = HeldPlate,
-        texture = WorldItems/Plate,
+        mesh = HeldFullPlate,
+        texture = WorldItems/FullPlate,
         scale = 0.25,
     }
-	model ServingItems_Plate_Blue
+	model ServingItems_Full_Plate_Blue
     {
-        mesh = HeldPlate,
-        texture = WorldItems/PlateBlue,
+        mesh = HeldFullPlate,
+        texture = WorldItems/FullPlateBlue,
         scale = 0.25,
     }
-	model ServingItems_Plate_Fancy
+	model ServingItems_Full_Plate_Fancy
     {
-        mesh = HeldPlate,
-        texture = WorldItems/PlateFancy,
+        mesh = HeldFullPlate,
+        texture = WorldItems/FullPlateFancy,
         scale = 0.25,
     }
-	model ServingItems_Plate_Orange
+	model ServingItems_Full_Plate_Orange
     {
-        mesh = HeldPlate,
-        texture = WorldItems/PlateOrange,
+        mesh = HeldFullPlate,
+        texture = WorldItems/FullPlateOrange,
+        scale = 0.25,
+    }
+
+    model ServingItems_Full_Plate_Ground
+    {
+        mesh = GroundFullPlate,
+        texture = WorldItems/FullPlate,
+        scale = 0.25,
+    }
+	model ServingItems_Full_Plate_Blue_Ground
+    {
+        mesh = GroundFullPlate,
+        texture = WorldItems/FullPlateBlue,
+        scale = 0.25,
+    }
+	model ServingItems_Full_Plate_Fancy_Ground
+    {
+        mesh = GroundFullPlate,
+        texture = WorldItems/FullPlateFancy,
+        scale = 0.25,
+    }
+	model ServingItems_Full_Plate_Orange_Ground
+    {
+        mesh = GroundFullPlate,
+        texture = WorldItems/FullPlateOrange,
         scale = 0.25,
     }
 }

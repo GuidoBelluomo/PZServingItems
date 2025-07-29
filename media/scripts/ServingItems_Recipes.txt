@@ -80,7 +80,7 @@ module ServingItems
 		RemoveResultItem:true,
 	}
 
-	recipe Pour on Ground
+	recipe Empty Plate
 	{
 		FullPlate/FullPlateBlue/FullPlateOrange/FullPlateFancy,
 
