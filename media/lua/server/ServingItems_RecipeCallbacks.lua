@@ -179,14 +179,12 @@ function ServingItems:ApplySourceValuesToPlate(source, plate, splitCount)
         plate:setHerbalistType(source:getHerbalistType());
 
         local emptyItemWeight = 0;
-        local emptyItemWeight = plate:getWeight();
-        local ingredientWeight = source:getWeight();
         if emptyItem then
             emptyItemWeight = ServingItems:GetItemInstance(emptyItem):getWeight();
         end
         
         -- Some food items seemed to weigh less than their base item, math.abs is my "fix". Technically this is incorrect, but I don't like the idea of food weighing 0 or even negative.
-        local foodWeight = math.abs((ingredientWeight - emptyItemWeight) / splitCount);
+        local foodWeight = math.abs((source:getWeight() - emptyItemWeight) / splitCount);
 
         plate:setWeight(emptyItemWeight + foodWeight);
         plate:setActualWeight(emptyItemWeight + foodWeight);
