@@ -62,30 +62,12 @@ module ServingItems
 		RemoveResultItem:true,
 	}
 
-	recipe Put Food in 5 Plates
-	{
-		[ServingItems.GetItemTypes.PlateableItems],
-		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
-		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
-		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
-		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
-		keep [ServingItems.GetItemTypes.EmptyPlates]=1,
-
-		Result:FullPlate=5,
-		OnCanPerform: ServingItems.CanDoNPlates,
-		OnCreate:PutIn5ServingItems_OnCreate,
-		Time:80.0,
-		Category:Cooking,
-		OnGiveXP:NoXP_OnGiveXP,
-		RemoveResultItem:true,
-	}
-
 	recipe Empty Plate
 	{
 		FullPlate/FullPlateBlue/FullPlateOrange/FullPlateFancy,
 
 		Result: FullPlate,
-		OnCreate:EmptyServingItem_OnCreate,
+		OnCreate:ServingItems.EmptyPlate,
 		Time:5.0,
 		RemoveResultItem:true,
 	}
