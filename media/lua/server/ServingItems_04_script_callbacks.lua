@@ -78,7 +78,7 @@ local function SplitIntoNPlates(splitCount, items, result, player)
 end
 
 for _, splitCount in ipairs(ServingItems.SplitOptions) do
-    _G["ServingItems.PutIn" .. splitCount .. "Plates"] = function (...)
+    ServingItems["PutIn" .. splitCount .. "Plates"] = function (...)
         SplitIntoNPlates(splitCount, ...)
     end
 end
