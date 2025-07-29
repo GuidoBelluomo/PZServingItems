@@ -71,7 +71,8 @@ local function SplitIntoNPlates(splitCount, items, result, player)
         end
 
         if (emptySource) then
-            inventory:AddItem(emptySource);
+            local newItem = inventory:AddItem(emptySource);
+            newItem:setCondition(sourceItem:getCondition())
         end
     end
 end
