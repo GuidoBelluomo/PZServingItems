@@ -210,7 +210,7 @@ for plateCount=1,maxSplitting do
 
         for _, sourceItem in ipairs(plateableItems) do
             local emptyItem = sourceItem:getReplaceOnUse();
-            for i=1, plateCount do -- It seems like adding the item manually by recreating it is the only way, as multiple result items don't do well with setName and mod data
+            for i=1, plateCount do -- It seems like adding the item manually by recreating it is the only way, as multiple result items don't seem to do well with setName and mod data
                 local emptyPlate = table.remove(emptyPlates)
                 local newPlate = ServingItems:CreateFullPlateFromEmptyPlate(emptyPlate);
                 ServingItems:ApplySourceValuesToPlate(sourceItem, newPlate, plateCount);
