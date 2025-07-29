@@ -1,6 +1,6 @@
 local ServingItems = ServingItems;
 
-ServingItems.SplitOptions = {1, 2, 4};
+ServingItems.SplitOptions = {1, 2, 3, 4, 5};
 
 -- Hashmap-like structure to quickly lookup plateable items
 ServingItems.PlateableItems = {
