@@ -1,17 +1,17 @@
 -- Initialize a separate table to expose globally, it will only be populated with what's needed globally
-local ServingItemsGlobal = {}
-_G["ServingItems"] = ServingItemsGlobal
-local ServingItems = {}
+local ServingItemsGlobal = {};
+_G["ServingItems"] = ServingItemsGlobal;
+local ServingItems = {};
 
 -- Replace default empty plate icons
 local function SetItemParam(name, param, value)
-    local scriptManager = getScriptManager()
-    local item = scriptManager:getItem(name)
-    item:DoParam(param .. " = " .. value)
+    local scriptManager = getScriptManager();
+    local item = scriptManager:getItem(name);
+    item:DoParam(param .. " = " .. value);
 end
-SetItemParam("Base.PlateBlue","Icon","PlateBlue")
-SetItemParam("Base.PlateOrange","Icon","PlateOrange")
-SetItemParam("Base.PlateFancy","Icon","PlateFancy")
+SetItemParam("Base.PlateBlue","Icon","PlateBlue");
+SetItemParam("Base.PlateOrange","Icon","PlateOrange");
+SetItemParam("Base.PlateFancy","Icon","PlateFancy");
 
 
 -- Hashmap-like structure to quickly lookup plateable items
@@ -53,49 +53,49 @@ ServingItemsGlobal.GetItemTypes = {}
 
 function ServingItemsGlobal.GetItemTypes.EmptyPlates(scriptItems)
     -- The FullPlateCounterparts variable name might be confusing, but the keys of that table contain the empty plates
-    local scriptManager = getScriptManager()
+    local scriptManager = getScriptManager();
     for k, _ in pairs(ServingItems.FullPlateCounterparts) do
-        scriptItems:add(scriptManager:FindItem(k))
+        scriptItems:add(scriptManager:FindItem(k));
     end
 end
 
 function ServingItemsGlobal.GetItemTypes.PlateableItems(scriptItems)
-    local scriptManager = getScriptManager()
+    local scriptManager = getScriptManager();
     for k, _ in pairs(ServingItems.PlateableItems) do
-        scriptItems:add(scriptManager:FindItem(k))
+        scriptItems:add(scriptManager:FindItem(k));
     end
 end
 
 function ServingItemsGlobal.CanDoNPlates(recipe, player, ingredient)
-    local needed = recipe:getResult():getCount()
-    local inv = player:getInventory():getItems()
-    local have = 0
+    local needed = recipe:getResult():getCount();
+    local inv = player:getInventory():getItems();
+    local have = 0;
 
-    for i = 0, inv:size()-1 do
+    for i = 0, inv:size() - 1 do
         local item = inv:get(i)
         if ServingItems.FullPlateCounterparts[item:getFullType()] then
-            have = have + 1
+            have = have + 1;
             if have >= needed then
-                return true
+                return true;
             end
         end
     end
 
-    return false
+    return false;
 end
 
 function ServingItems:GetItemInstance(name)
     if not string.find(name, ".", 1, true) then
-        name = "Base." .. name
+        name = "Base." .. name;
     end
 
-    local item = self.ItemInstances[name]
+    local item = self.ItemInstances[name];
     if item ~= nil then
-        return item
+        return item;
     else
-        item = InventoryItemFactory.CreateItem(name)
-        self.ItemInstances[name] = item
-        return item
+        item = InventoryItemFactory.CreateItem(name);
+        self.ItemInstances[name] = item;
+        return item;
     end
 end
 
@@ -105,31 +105,31 @@ function ServingItems:NameCalcFunction(name, emptyPlate)
 end
 
 function ServingItems:FilterPlateableItems(items)
-    local plateableItems = {}
+    local plateableItems = {};
     for i=0,items:size() - 1 do
         local item = items:get(i);
         local itemType = item:getFullType();
         if ServingItems.PlateableItems[itemType] ~= nil then
-            plateableItems[#plateableItems + 1] = item
+            plateableItems[#plateableItems + 1] = item;
         end
     end
 
-    return plateableItems
+    return plateableItems;
 end
 
 function ServingItems:FilterEmptyPlates(items, max)
-    local emptyPlates = {}
+    local emptyPlates = {};
     for i = 0, items:size() - 1 do
         local item = items:get(i)
         if ServingItems.FullPlateCounterparts[item:getFullType()] then
             emptyPlates[#emptyPlates + 1] = item
             if #emptyPlates >= max then
-                break
+                break;
             end
         end
     end
 
-    return emptyPlates
+    return emptyPlates;
 end
 
 function ServingItems:ApplySourceValuesToPlate(source, plate, splitCount)
@@ -203,9 +203,9 @@ end
 local maxSplitting = 5;
 for i=1,maxSplitting do
     _G["PutIn"..i.."ServingItems_OnCreate"] = function (items, result, player)
-        local plateableItems = ServingItems:FilterPlateableItems(items)
-        local inventory = player:getInventory()
-        local emptyPlates = ServingItems:FilterEmptyPlates(inventory:getItems())
+        local plateableItems = ServingItems:FilterPlateableItems(items);
+        local inventory = player:getInventory();
+        local emptyPlates = ServingItems:FilterEmptyPlates(inventory:getItems());
 
 
         for _, sourceItem in ipairs(plateableItems) do
@@ -241,7 +241,7 @@ end
 
 function EmptyServingItem_OnCreate(items, result, player)
     for i=0,items:size() - 1 do
-        local item = ServingItems:GetItemInstance(items:get(i):getReplaceOnUse())
+        local item = ServingItems:GetItemInstance(items:get(i):getReplaceOnUse());
         player:getInventory():AddItem(item:getFullType());
     end
 end
