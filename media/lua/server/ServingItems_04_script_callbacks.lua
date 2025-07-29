@@ -77,8 +77,7 @@ local function SplitIntoNPlates(splitCount, items, result, player)
     end
 end
 
-local maxSplitting = 4;
-for splitCount=1,maxSplitting do
+for _, splitCount in ipairs(ServingItems.SplitOptions) do
     _G["ServingItems.PutIn" .. splitCount .. "Plates"] = function (...)
         SplitIntoNPlates(splitCount, ...)
     end

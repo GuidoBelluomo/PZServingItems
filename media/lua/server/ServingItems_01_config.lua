@@ -1,5 +1,7 @@
 local ServingItems = ServingItems;
 
+ServingItems.SplitOptions = {1, 2, 4}
+
 -- Hashmap-like structure to quickly lookup plateable items
 ServingItems.PlateableItems = {
     ["Base.PieWholeRaw"] = true,
