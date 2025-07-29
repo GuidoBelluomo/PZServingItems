@@ -67,7 +67,6 @@ ServingItems.TransferrableItemData = {
     {["value"] = "FreezingTime", ["getter"] = "getFreezingTime", ["split"] = false},
     {["value"] = "RottenTime", ["getter"] = "getRottenTime", ["split"] = false},
     {["value"] = "CompostTime", ["getter"] = "getCompostTime", ["split"] = false},
-    {["value"] = "BadInMicrowave", ["getter"] = "isBadInMicrowave", ["split"] = false},
     {["value"] = "BadCold", ["getter"] = "isBadCold", ["split"] = false},
     {["value"] = "GoodHot", ["getter"] = "isGoodHot", ["split"] = false},
     {["value"] = "Heat", ["getter"] = "getHeat", ["split"] = false},
