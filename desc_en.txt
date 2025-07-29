@@ -5,6 +5,8 @@ It seamlessly supports all plate colors, adding models and animations for each o
 The mod also changes the base colored plate sprites so they are actually colored, and no longer only white.
 
 When splitting, the mod retrieves every single food property and applies it to the resulting plate, dividing it as necessary.
+For example, any poison added gets split into each plate evenly.
+Instead, the heat of the item is not split, so all plates will have the same heat as the starting item.
 
 What you can currently split into plates:
 - Whole Pie/Cake
