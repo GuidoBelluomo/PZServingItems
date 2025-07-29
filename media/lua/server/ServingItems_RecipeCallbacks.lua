@@ -42,7 +42,7 @@ ServingItems.ItemInstances = {
 }
 
 -- Store the respective full version of every base plate for easy lookup
-ServingItems.FullPlateCounterparts = {
+ServingItems.FullsplitCounterparts = {
     ["Base.Plate"] = "ServingItems.FullPlate",
     ["Base.PlateBlue"] = "ServingItems.FullPlateBlue",
     ["Base.PlateOrange"] = "ServingItems.FullPlateOrange",
@@ -52,9 +52,9 @@ ServingItems.FullPlateCounterparts = {
 ServingItemsGlobal.GetItemTypes = {}
 
 function ServingItemsGlobal.GetItemTypes.EmptyPlates(scriptItems)
-    -- The FullPlateCounterparts variable name might be confusing, but the keys of that table contain the empty plates
+    -- The FullsplitCounterparts variable name might be confusing, but the keys of that table contain the empty plates
     local scriptManager = getScriptManager();
-    for k, _ in pairs(ServingItems.FullPlateCounterparts) do
+    for k, _ in pairs(ServingItems.FullsplitCounterparts) do
         scriptItems:add(scriptManager:FindItem(k));
     end
 end
@@ -73,7 +73,7 @@ function ServingItemsGlobal.CanDoNPlates(recipe, player, ingredient)
 
     for i = 0, inv:size() - 1 do
         local item = inv:get(i)
-        if ServingItems.FullPlateCounterparts[item:getFullType()] then
+        if ServingItems.FullsplitCounterparts[item:getFullType()] then
             have = have + 1;
             if have >= needed then
                 return true;
@@ -121,7 +121,7 @@ function ServingItems:FilterEmptyPlates(items, max)
     local emptyPlates = {};
     for i = 0, items:size() - 1 do
         local item = items:get(i)
-        if ServingItems.FullPlateCounterparts[item:getFullType()] then
+        if ServingItems.FullsplitCounterparts[item:getFullType()] then
             emptyPlates[#emptyPlates + 1] = item
             if #emptyPlates >= max then
                 break;
@@ -132,7 +132,7 @@ function ServingItems:FilterEmptyPlates(items, max)
     return emptyPlates;
 end
 
-function ServingItems:ApplySourceValuesToPlate(source, plate, splitCount)
+function ServingItems:ApplySourceFoodMetadataToPlate(source, emptySource, plate, emptyPlate, splitCount)
         plate:setBaseHunger(source:getBaseHunger()/ splitCount);
         plate:setHungChange(source:getBaseHunger()/ splitCount);
         plate:setThirstChange(source:getThirstChange()/ splitCount);
@@ -177,48 +177,49 @@ function ServingItems:ApplySourceValuesToPlate(source, plate, splitCount)
         plate:setCustomEatSound(source:getCustomEatSound());
         plate:setChef(source:getChef());
         plate:setHerbalistType(source:getHerbalistType());
-
-        local emptyItemWeight = 0;
-        if emptyItem then
-            emptyItemWeight = ServingItems:GetItemInstance(emptyItem):getWeight();
+        plate:setName(ServingItems:NameCalcFunction(source:getName(), emptyPlate));
+        local emptySourceWeight = 0;
+        if emptySource then
+            emptySourceWeight = ServingItems:GetItemInstance(emptyItem):getWeight();
         end
         
         -- Some food items seemed to weigh less than their base item, math.abs is my "fix". Technically this is incorrect, but I don't like the idea of food weighing 0 or even negative.
-        local foodWeight = math.abs((source:getWeight() - emptyItemWeight) / splitCount);
+        local foodWeight = math.abs((source:getWeight() - emptySourceWeight) / splitCount);
 
-        plate:setWeight(emptyItemWeight + foodWeight);
-        plate:setActualWeight(emptyItemWeight + foodWeight);
+        plate:setWeight(emptySourceWeight + foodWeight);
+        plate:setActualWeight(emptySourceWeight + foodWeight);
         local modData = plate:getModData();
-        modData.emptyItemWeight = emptyItemWeight;
+        modData.emptySourceWeight = emptySourceWeight;
         modData.foodWeight = foodWeight;
+
+
 end
 
 function ServingItems:CreateFullPlateFromEmptyPlate(emptyPlate)
-    local fullPlateType = ServingItems.FullPlateCounterparts[emptyPlate:getFullType()];
+    local fullPlateType = ServingItems.FullsplitCounterparts[emptyPlate:getFullType()];
     return InventoryItemFactory.CreateItem(fullPlateType);
 end
 
 local maxSplitting = 5;
-for plateCount=1,maxSplitting do
-    _G["PutIn" .. plateCount .. "ServingItems_OnCreate"] = function (items, result, player)
+for splitCount=1,maxSplitting do
+    _G["PutIn" .. splitCount .. "ServingItems_OnCreate"] = function (items, result, player)
         local plateableItems = ServingItems:FilterPlateableItems(items);
         local inventory = player:getInventory();
-        local emptyPlates = ServingItems:FilterEmptyPlates(inventory:getItems(), plateCount);
+        local emptyPlates = ServingItems:FilterEmptyPlates(inventory:getItems(), splitCount);
 
 
         for _, sourceItem in ipairs(plateableItems) do
-            local emptyItem = sourceItem:getReplaceOnUse();
-            for i=1, plateCount do -- It seems like adding the item manually by recreating it is the only way, as multiple result items don't seem to do well with setName and mod data
+            local emptySource = sourceItem:getReplaceOnUse();
+            for i=1, splitCount do -- It seems like adding the item manually by recreating it is the only way, as multiple result items don't seem to do well with setName and mod data
                 local emptyPlate = table.remove(emptyPlates)
                 local newPlate = ServingItems:CreateFullPlateFromEmptyPlate(emptyPlate);
-                ServingItems:ApplySourceValuesToPlate(sourceItem, newPlate, plateCount);
-                newPlate:setName(ServingItems:NameCalcFunction(sourceItem:getName(), emptyPlate));
+                ServingItems:ApplySourceFoodMetadataToPlate(sourceItem, emptySource, newPlate, emptyPlate, splitCount);
                 inventory:Remove(emptyPlate);
                 inventory:AddItem(newPlate);
             end
 
-            if (emptyItem) then
-                inventory:AddItem(emptyItem);
+            if (emptySource) then
+                inventory:AddItem(emptySource);
             end
         end
     end
@@ -229,12 +230,12 @@ function ServingItems_OnEat(item, character)
     local hungerChange = item:getHungChange();
     local modData = item:getModData();
     local foodWeight = modData.foodWeight;
-    local emptyItemWeight = modData.emptyItemWeight;
+    local emptySourceWeight = modData.emptySourceWeight;
 
     local currentPercentage = hungerChange / baseHunger; -- Only way to calculate this, it seems.
 
-    item:setWeight(emptyItemWeight + (foodWeight * currentPercentage));
-    item:setActualWeight(emptyItemWeight + (foodWeight * currentPercentage));
+    item:setWeight(emptySourceWeight + (foodWeight * currentPercentage));
+    item:setActualWeight(emptySourceWeight + (foodWeight * currentPercentage));
 end
 
 function EmptyServingItem_OnCreate(items, result, player)
