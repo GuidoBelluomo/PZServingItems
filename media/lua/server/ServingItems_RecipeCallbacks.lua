@@ -42,7 +42,7 @@ ServingItems.ItemInstances = {
 }
 
 -- Store the respective full version of every base plate for easy lookup
-ServingItems.FullsplitCounterparts = {
+ServingItems.FullCounterparts = {
     ["Base.Plate"] = "ServingItems.FullPlate",
     ["Base.PlateBlue"] = "ServingItems.FullPlateBlue",
     ["Base.PlateOrange"] = "ServingItems.FullPlateOrange",
@@ -52,9 +52,9 @@ ServingItems.FullsplitCounterparts = {
 ServingItemsGlobal.GetItemTypes = {}
 
 function ServingItemsGlobal.GetItemTypes.EmptyPlates(scriptItems)
-    -- The FullsplitCounterparts variable name might be confusing, but the keys of that table contain the empty plates
+    -- The FullCounterparts variable name might be confusing, but the keys of that table contain the empty plates
     local scriptManager = getScriptManager();
-    for k, _ in pairs(ServingItems.FullsplitCounterparts) do
+    for k, _ in pairs(ServingItems.FullCounterparts) do
         scriptItems:add(scriptManager:FindItem(k));
     end
 end
@@ -73,7 +73,7 @@ function ServingItemsGlobal.CanDoNPlates(recipe, player, ingredient)
 
     for i = 0, inv:size() - 1 do
         local item = inv:get(i)
-        if ServingItems.FullsplitCounterparts[item:getFullType()] then
+        if ServingItems.FullCounterparts[item:getFullType()] then
             have = have + 1;
             if have >= needed then
                 return true;
@@ -121,7 +121,7 @@ function ServingItems:FilterEmptyPlates(items, max)
     local emptyPlates = {};
     for i = 0, items:size() - 1 do
         local item = items:get(i)
-        if ServingItems.FullsplitCounterparts[item:getFullType()] then
+        if ServingItems.FullCounterparts[item:getFullType()] then
             emptyPlates[#emptyPlates + 1] = item
             if #emptyPlates >= max then
                 break;
@@ -196,7 +196,7 @@ function ServingItems:ApplySourceFoodMetadataToPlate(source, emptySource, plate,
 end
 
 function ServingItems:CreateFullPlateFromEmptyPlate(emptyPlate)
-    local fullPlateType = ServingItems.FullsplitCounterparts[emptyPlate:getFullType()];
+    local fullPlateType = ServingItems.FullCounterparts[emptyPlate:getFullType()];
     return InventoryItemFactory.CreateItem(fullPlateType);
 end
 
