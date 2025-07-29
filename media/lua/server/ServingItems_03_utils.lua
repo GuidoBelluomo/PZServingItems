@@ -38,7 +38,7 @@ function ServingItems:CreateFullPlateFromEmptyPlate(emptyPlate)
     return InventoryItemFactory.CreateItem(fullPlateType);
 end
 
-local function applyTransferrableDataToPlate(source, plate)
+local function applyTransferrableDataToPlate(source, plate, splitCount)
     for _, entry in ipairs(ServingItems.TransferrableItemData) do
         local getter = source[entry.getter];
         local setter = plate["set" .. entry.value];
@@ -50,7 +50,7 @@ local function applyTransferrableDataToPlate(source, plate)
 end
 
 function ServingItems:InitPlateFromSource(source, emptySource, plate, emptyPlate, splitCount)
-    applyTransferrableDataToPlate(source, plate)
+    applyTransferrableDataToPlate(source, plate, splitCount)
     plate:setName(ServingItems:NameCalcFunction(source:getName(), emptyPlate));
     plate:setCustomName(true)
     local emptySourceWeight = 0;
