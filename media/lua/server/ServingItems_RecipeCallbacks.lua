@@ -133,50 +133,50 @@ function ServingItems:FilterEmptyPlates(items, max)
 end
 
 function ServingItems:ApplySourceValuesToPlate(source, plate, splitCount)
-        result:setBaseHunger(item:getBaseHunger()/ splitCount);
-        result:setHungChange(item:getBaseHunger()/ splitCount);
-        result:setThirstChange(item:getThirstChange()/ splitCount);
-        result:setBoredomChange(item:getBoredomChange()/ splitCount);
-        result:setUnhappyChange(item:getUnhappyChange()/ splitCount);
-        result:setCarbohydrates(item:getCarbohydrates()/ splitCount);
-        result:setLipids(item:getLipids()/ splitCount);
-        result:setProteins(item:getProteins()/ splitCount);
-        result:setCalories(item:getCalories()/ splitCount);
-        result:setReduceFoodSickness(item:getReduceFoodSickness()/ splitCount);
-        result:setFluReduction(item:getFluReduction()/ splitCount);
-        result:setPainReduction(item:getPainReduction()/ splitCount);
-        result:setPoisonPower(item:getPoisonPower()/ splitCount);
-        result:setTaintedWater(item:isTaintedWater());
-        result:setRotten(item:isRotten());
-        result:setBurnt(item:isBurnt());
-        result:setAge(item:getAge());
-        result:setCooked(item:isCooked());
-        result:setIsCookable(item:isIsCookable());
-        result:setCookingTime(item:getCookingTime());
-        result:setMinutesToCook(item:getMinutesToCook()/ splitCount);
-        result:setMinutesToBurn(item:getMinutesToBurn()/ splitCount);
-        result:setOffAge(item:getOffAge());
-        result:setOffAgeMax(item:getOffAgeMax());
-        result:setLastAged(item:getLastAged());
-        result:setFrozen(item:isFrozen());
-        result:setCanBeFrozen(item:canBeFrozen());
-        result:setFreezingTime(item:getFreezingTime());
-        result:setRottenTime(item:getRottenTime());
-        result:setCompostTime(item:getCompostTime());
-        result:setBadInMicrowave(item:isBadInMicrowave());
-        result:setBadCold(item:isBadCold());
-        result:setGoodHot(item:isGoodHot());
-        result:setHeat(item:getHeat());
-        result:setbDangerousUncooked(item:isbDangerousUncooked());
-        result:setLastCookMinute(item:getLastCookMinute());
-        result:setSpice(item:isSpice());
-        result:setPoisonDetectionLevel(item:getPoisonDetectionLevel());
-        result:setPoisonLevelForRecipe(item:getPoisonLevelForRecipe());
-        result:setUseForPoison(item:getUseForPoison());
-        result:setFoodType(item:getFoodType());
-        result:setCustomEatSound(item:getCustomEatSound());
-        result:setChef(item:getChef());
-        result:setHerbalistType(item:getHerbalistType());
+        plate:setBaseHunger(source:getBaseHunger()/ splitCount);
+        plate:setHungChange(source:getBaseHunger()/ splitCount);
+        plate:setThirstChange(source:getThirstChange()/ splitCount);
+        plate:setBoredomChange(source:getBoredomChange()/ splitCount);
+        plate:setUnhappyChange(source:getUnhappyChange()/ splitCount);
+        plate:setCarbohydrates(source:getCarbohydrates()/ splitCount);
+        plate:setLipids(source:getLipids()/ splitCount);
+        plate:setProteins(source:getProteins()/ splitCount);
+        plate:setCalories(source:getCalories()/ splitCount);
+        plate:setReduceFoodSickness(source:getReduceFoodSickness()/ splitCount);
+        plate:setFluReduction(source:getFluReduction()/ splitCount);
+        plate:setPainReduction(source:getPainReduction()/ splitCount);
+        plate:setPoisonPower(source:getPoisonPower()/ splitCount);
+        plate:setTaintedWater(source:isTaintedWater());
+        plate:setRotten(source:isRotten());
+        plate:setBurnt(source:isBurnt());
+        plate:setAge(source:getAge());
+        plate:setCooked(source:isCooked());
+        plate:setIsCookable(source:isIsCookable());
+        plate:setCookingTime(source:getCookingTime());
+        plate:setMinutesToCook(source:getMinutesToCook()/ splitCount);
+        plate:setMinutesToBurn(source:getMinutesToBurn()/ splitCount);
+        plate:setOffAge(source:getOffAge());
+        plate:setOffAgeMax(source:getOffAgeMax());
+        plate:setLastAged(source:getLastAged());
+        plate:setFrozen(source:isFrozen());
+        plate:setCanBeFrozen(source:canBeFrozen());
+        plate:setFreezingTime(source:getFreezingTime());
+        plate:setRottenTime(source:getRottenTime());
+        plate:setCompostTime(source:getCompostTime());
+        plate:setBadInMicrowave(source:isBadInMicrowave());
+        plate:setBadCold(source:isBadCold());
+        plate:setGoodHot(source:isGoodHot());
+        plate:setHeat(source:getHeat());
+        plate:setbDangerousUncooked(source:isbDangerousUncooked());
+        plate:setLastCookMinute(source:getLastCookMinute());
+        plate:setSpice(source:isSpice());
+        plate:setPoisonDetectionLevel(source:getPoisonDetectionLevel());
+        plate:setPoisonLevelForRecipe(source:getPoisonLevelForRecipe());
+        plate:setUseForPoison(source:getUseForPoison());
+        plate:setFoodType(source:getFoodType());
+        plate:setCustomEatSound(source:getCustomEatSound());
+        plate:setChef(source:getChef());
+        plate:setHerbalistType(source:getHerbalistType());
 
         local emptyItemWeight = 0;
         local emptyItemWeight = plate:getWeight();
@@ -197,23 +197,23 @@ end
 
 function ServingItems:CreateFullPlateFromEmptyPlate(emptyPlate)
     local fullPlateType = ServingItems.FullPlateCounterparts[emptyPlate:getFullType()];
-    newPlate = InventoryItemFactory.CreateItem(fullPlateType);
+    return InventoryItemFactory.CreateItem(fullPlateType);
 end
 
 local maxSplitting = 5;
-for i=1,maxSplitting do
-    _G["PutIn"..i.."ServingItems_OnCreate"] = function (items, result, player)
+for plateCount=1,maxSplitting do
+    _G["PutIn" .. plateCount .. "ServingItems_OnCreate"] = function (items, result, player)
         local plateableItems = ServingItems:FilterPlateableItems(items);
         local inventory = player:getInventory();
-        local emptyPlates = ServingItems:FilterEmptyPlates(inventory:getItems());
+        local emptyPlates = ServingItems:FilterEmptyPlates(inventory:getItems(), plateCount);
 
 
         for _, sourceItem in ipairs(plateableItems) do
             local emptyItem = sourceItem:getReplaceOnUse();
-            for k=1, i do -- It seems like adding the item manually by recreating it is the only way, as multiple result items don't do well with setName and mod data
-                local emptyPlate = table.remove(plates)
+            for i=1, plateCount do -- It seems like adding the item manually by recreating it is the only way, as multiple result items don't do well with setName and mod data
+                local emptyPlate = table.remove(emptyPlates)
                 local newPlate = ServingItems:CreateFullPlateFromEmptyPlate(emptyPlate);
-                ServingItems:ApplySourceValuesToPlate(sourceItem, newPlate, i);
+                ServingItems:ApplySourceValuesToPlate(sourceItem, newPlate, plateCount);
                 newPlate:setName(ServingItems:NameCalcFunction(sourceItem:getName(), emptyPlate));
                 inventory:Remove(emptyPlate);
                 inventory:AddItem(newPlate);
