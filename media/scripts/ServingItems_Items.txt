@@ -9,8 +9,8 @@ module ServingItems
 		ReplaceOnUse	=	Base.Plate,
 		OnEat = ServingItems_OnEat,
 		EatType = plate,
-		StaticModel = ServingItems_Plate,
-		WorldStaticModel = Plate_Ground,
+		StaticModel = ServingItems_Full_Plate,
+		WorldStaticModel = ServingItems_Full_Plate_Ground,
 	}
 
 	item FullPlateBlue
@@ -22,8 +22,8 @@ module ServingItems
 		ReplaceOnUse	=	Base.PlateBlue,
 		OnEat = ServingItems_OnEat,
 		EatType = plate,
-		StaticModel = ServingItems_Plate_Blue,
-		WorldStaticModel = Plate_Blue_Ground,
+		StaticModel = ServingItems_Full_Plate_Blue,
+		WorldStaticModel = ServingItems_Full_Plate_Blue_Ground,
 	}
 
 	item FullPlateOrange
@@ -35,8 +35,8 @@ module ServingItems
 		ReplaceOnUse	=	Base.PlateOrange,
 		OnEat = ServingItems_OnEat,
 		EatType = plate,
-		StaticModel = ServingItems_Plate_Orange,
-		WorldStaticModel = Plate_Orange_Ground,
+		StaticModel = ServingItems_Full_Plate_Orange,
+		WorldStaticModel = ServingItems_Full_Plate_Orange_Ground,
 	}
 
 	item FullPlateFancy
@@ -48,7 +48,7 @@ module ServingItems
 		ReplaceOnUse	=	Base.PlateFancy,
 		OnEat = ServingItems_OnEat,
 		EatType = plate,
-		StaticModel = ServingItems_Plate_Fancy,
-		WorldStaticModel = Plate_Fancy_Ground,
+		StaticModel = ServingItems_Full_Plate_Fancy,
+		WorldStaticModel = ServingItems_Full_Plate_Fancy_Ground,
 	}
 }
