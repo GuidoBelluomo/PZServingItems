@@ -3,19 +3,14 @@ local ServingItems = ServingItems;
 -- Hashmap-like structure to quickly lookup plateable items
 ServingItems.PlateableItems = {
     ["Base.PieWholeRaw"] = true,
-    ["Base.Pie"] = true,
+    ["Base.PiePrep"] = true,
     ["Base.CakeRaw"] = true,
     ["Base.GriddlePanFriedVegetables"] = true,
     ["Base.PanFriedVegetables"] = true,
     ["Base.PanFriedVegetables2"] = true,
     ["Base.Sandwich"] = true,
-    ["Base.BurgerRecipe"] = true,
-    ["farming.Salad"] = true,
-    ["Base.FruitSalad"] = true,
-    ["Base.WaterSaucepanRice"] = true,
     ["Base.OmeletteRecipe"] = true,
     ["Base.PieWholeRaw"] = true,
-    ["Base.PieWholeRawSweet"] = true,
     ["Base.PieWholeRawSweet"] = true,
 };
 

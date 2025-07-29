@@ -1,4 +1,0 @@
-Tooltip_EN = {
-	Tooltip_item_EmptyServingTray = "An improvised container for serving food. Doesn't like heat.",
-	Tooltip_item_HalfPlank = "A wooden plank sawn in half.",
-}

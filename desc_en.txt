@@ -1,15 +1,15 @@
-This mod makes vanilla plates useful, allowing to divide a lot of recipes into plates.
+This mod makes vanilla plates useful, letting you use them to store food.
 
-At the moment, the game only allows placing soup, stew, pasta, and rice into bowls. Anything else must be eaten directly off the item it is cooked in, rendering that item useless until emptied out, so you can't cook in it again.
-This mod effectively solves that, allowing all other sensible recipes to be placed in plates.
+At the moment, the game only allows placing select items like soup, stew, pasta, and rice into bowls. Anything else must be eaten directly off the item it is cooked in, rendering that item useless until emptied out.
+This mod effectively solves that, allowing all of those other recipes to be placed in plates so they can let you cook.
 
-This mod calculates the net weight of the food, divides it for however many plates it has been split into, and adds it to each plate. 
-You can place every sensible cookable recipe into plates, except Soup and Stew. There are bowls for those.
+This mod effectively retrieves every single food property and applies it to the resulting plate, dividing it as necessary.
 
-What you can place into plates:
-
-
-Raw ingredients (Vegetables, fruit, meat) cannot be placed into plates either.
+What you can currently split into plates:
+- Whole Pie/Cake
+- Stir Fry
+- Roast
+- Omelette (in the Frying Pan)
 
 Current supported languages are English and Italian.
 

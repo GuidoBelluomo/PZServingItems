@@ -1,8 +1,18 @@
-Recipe_IT = {
-    Recipe_Put_Food_in_1_Plate = "Metti cibo in 1 piatto",
-    Recipe_Put_Food_in_2_Plates = "Metti cibo in 2 piatti",
-    Recipe_Put_Food_in_3_Plates = "Metti cibo in 3 piatti",
-    Recipe_Put_Food_in_4_Plates = "Metti cibo in 4 piatti",
-    Recipe_Put_Food_in_5_Plates = "Metti cibo in 5 piatti",
-    Recipe_Pour_on_Ground = "Versa a terra",
-}
+Questa mod rende i piatti di ceramica utili, permettendoti di usarli per servire il cibo.
+
+Al momento, il gioco consente di mettere solo alcuni alimenti come zuppe, stufati, pasta e riso nelle ciotole. Tutto il resto deve essere mangiato direttamente dal contenitore in cui è stato cucinato, rendendo quell’oggetto inutilizzabile finché non viene svuotato.
+Questa mod risolve efficacemente il problema, permettendo di mettere tutte le altre ricette nei piatti così da poter continuare a cucinare.
+
+La mod recupera ogni singola proprietà del cibo e la applica al piatto risultante, dividendola se necessario.
+
+Cibi che puoi attualmente dividere nei piatti:
+- Torta/Crostata intera
+- Saltato in padella
+- Arrosto
+- Frittata (nella padella)
+
+Lingue attualmente supportate: inglese e italiano.
+
+Workshop ID: 1261202319
+Mod ID: ServingItems
+Tag: cucina,piatti,servire,cibo,piatto

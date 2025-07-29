@@ -1,4 +1,0 @@
-Items_IT = {
-	DisplayNamePasta_in_a_plate = "Pasta in un piatto",
-	DisplayNameRice_in_a_plate = "Riso in un piatto",
-}
