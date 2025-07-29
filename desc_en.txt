@@ -1,9 +1,10 @@
-This mod makes vanilla plates useful, letting you use them to store food.
+At the moment, the game only allows placing certain foods like soups, stews, pasta, and rice into bowls.
+Everything else has to be eaten directly from the container it was cooked in, rendering that item unusable until it’s emptied.
+This mod effectively solves the problem, allowing you to use plates to store all the other recipes, so you can keep cookin'.
+It seamlessly supports all plate colors, adding models and animations for each of them.
+The mod also changes the base colored plate sprites so they are actually colored, and no longer only white.
 
-At the moment, the game only allows placing select items like soup, stew, pasta, and rice into bowls. Anything else must be eaten directly off the item it is cooked in, rendering that item useless until emptied out.
-This mod effectively solves that, allowing all of those other recipes to be placed in plates so they can let you cook.
-
-This mod effectively retrieves every single food property and applies it to the resulting plate, dividing it as necessary.
+When splitting, the mod retrieves every single food property and applies it to the resulting plate, dividing it as necessary.
 
 What you can currently split into plates:
 - Whole Pie/Cake
