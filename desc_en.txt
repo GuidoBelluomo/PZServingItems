@@ -4,7 +4,7 @@ This mod effectively solves the problem, allowing you to use plates to store all
 It seamlessly supports all plate colors, adding models and animations for each of them.
 The mod also changes the base colored plate sprites so they are actually colored, and no longer only white.
 
-When splitting, the mod retrieves every single food property and applies it to the resulting plate, dividing it as necessary.
+When splitting, the mod retrieves every single food property and applies it to the resulting plate, dividing it as necessary. You can split in up to 5 plates.
 For example, any poison added gets split into each plate evenly.
 Instead, the heat of the item is not split, so all plates will have the same heat as the starting item.
 

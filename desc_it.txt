@@ -4,7 +4,7 @@ Questa mod risolve efficacemente il problema, permettendo di utilizzare i piatti
 Supporta senza problemi tutti i colori dei piatti, aggiungendo modelli e animazioni per ognuno di essi. 
 La mod modifica anche gli sprite dei piatti colorati di base, in modo che siano effettivamente colorati e non più soltanto bianchi.
 
-Quando il cibo viene diviso, la mod recupera ogni singola proprietà dell’alimento e la applica al piatto risultante, suddividendola quando necessario.
+Quando il cibo viene diviso, la mod recupera ogni singola proprietà dell’alimento e la applica al piatto risultante, suddividendola quando necessario. Puoi dividere in fino a 5 piatti.
 Ad esempio, qualsiasi veleno aggiunto viene suddiviso equamente in ogni piatto.
 Invece, il calore dell’oggetto non viene suddiviso, quindi tutti i piatti avranno la stessa temperatura dell’oggetto di partenza.
 
